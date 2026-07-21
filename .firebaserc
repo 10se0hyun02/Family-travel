@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "family-trip-2026-0911"
+  },
+  "targets": {
+    "family-trip-2026-0911": {
+      "hosting": {
+        "prod": ["family-trip-2026-0911"],
+        "dev": ["family-trip-2026-0911-dev"]
+      }
+    }
   }
 }
