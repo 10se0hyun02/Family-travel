@@ -1,9 +1,20 @@
 {
-  "hosting": {
-    "public": ".",
-    "ignore": ["firebase.json", ".firebaserc", "**/.*"],
-    "rewrites": [
-      { "source": "**", "destination": "/index.html" }
-    ]
-  }
+  "hosting": [
+    {
+      "target": "prod",
+      "public": ".",
+      "ignore": ["firebase.json", ".firebaserc", "**/.*"],
+      "rewrites": [
+        { "source": "**", "destination": "/index.html" }
+      ]
+    },
+    {
+      "target": "dev",
+      "public": ".",
+      "ignore": ["firebase.json", ".firebaserc", "**/.*"],
+      "rewrites": [
+        { "source": "**", "destination": "/index.html" }
+      ]
+    }
+  ]
 }
