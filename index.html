@@ -9,29 +9,29 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── Tokyo Night Light (기본) ── */
+    /* ── Tropical Beach Light (기본) ── */
     :root {
-      --primary: #3561a8;
-      --primary-light: #e2eaf8;
+      --primary: #0a7e9a;
+      --primary-light: #d5eff7;
       --accent: #d4714a;
       --bg: #f0ebe3;
       --bg2: #f5f0e8;
       --card: #fffcf8;
-      --text: #1a2448;
-      --muted: #7a8090;
+      --text: #1a3440;
+      --muted: #6e8a94;
       --border: #d8d0c4;
-      --shadow: 0 2px 14px rgba(20,36,80,0.10);
-      --header-from: #1e3a6e;
-      --header-mid:  #2a5298;
-      --header-to:   #1a7a8a;
-      --header-text: #e8f0ff;
-      --dday-bg: rgba(255,255,255,0.22); --dday-text: #e8f0ff;
+      --shadow: 0 2px 14px rgba(10,100,130,0.10);
+      --header-from: #1a5868;
+      --header-mid:  #157896;
+      --header-to:   #0ea09c;
+      --header-text: #e8f8ff;
+      --dday-bg: rgba(255,255,255,0.22); --dday-text: #e8f8ff;
       --bk-conf-bg: #d6f0e0;  --bk-conf-text: #1a6b3a;
       --bk-pend-bg: #fef4d6;  --bk-pend-text: #8a5c00;
-      --bk-plan-bg: #dde5f6;  --bk-plan-text: #3a5290;
-      --act-desc: #5a6898;
+      --bk-plan-bg: #d5eef8;  --bk-plan-text: #0a5e7a;
+      --act-desc: #4a8090;
       --notice-bg: #fefbe8; --notice-border: #ead97a; --notice-text: #6b5000;
-      --btn-edit-bg: #dce8fa;  --btn-edit-text: #1e4d9e;
+      --btn-edit-bg: #ccecf6;  --btn-edit-text: #085e78;
       --btn-del-bg:  #fde8e8;  --btn-del-text:  #b91c1c;
       --radius: 16px; --rsm: 10px;
     }
@@ -92,45 +92,52 @@
 
     /* ── 수동 라이트 모드 ── */
     [data-theme="light"] {
-      --primary: #3561a8;
-      --primary-light: #e2eaf8;
+      --primary: #0a7e9a;
+      --primary-light: #d5eff7;
       --accent: #d4714a;
       --bg: #f0ebe3;
       --bg2: #f5f0e8;
       --card: #fffcf8;
-      --text: #1a2448;
-      --muted: #7a8090;
+      --text: #1a3440;
+      --muted: #6e8a94;
       --border: #d8d0c4;
-      --shadow: 0 2px 14px rgba(20,36,80,0.10);
-      --header-from: #1e3a6e;
-      --header-mid:  #2a5298;
-      --header-to:   #1a7a8a;
-      --header-text: #e8f0ff;
-      --dday-bg: rgba(255,255,255,0.22); --dday-text: #e8f0ff;
+      --shadow: 0 2px 14px rgba(10,100,130,0.10);
+      --header-from: #1a5868;
+      --header-mid:  #157896;
+      --header-to:   #0ea09c;
+      --header-text: #e8f8ff;
+      --dday-bg: rgba(255,255,255,0.22); --dday-text: #e8f8ff;
       --bk-conf-bg: #d6f0e0;  --bk-conf-text: #1a6b3a;
       --bk-pend-bg: #fef4d6;  --bk-pend-text: #8a5c00;
-      --bk-plan-bg: #dde5f6;  --bk-plan-text: #3a5290;
-      --act-desc: #5a6898;
+      --bk-plan-bg: #d5eef8;  --bk-plan-text: #0a5e7a;
+      --act-desc: #4a8090;
       --notice-bg: #fefbe8; --notice-border: #ead97a; --notice-text: #6b5000;
-      --btn-edit-bg: #dce8fa;  --btn-edit-text: #1e4d9e;
+      --btn-edit-bg: #ccecf6;  --btn-edit-text: #085e78;
       --btn-del-bg:  #fde8e8;  --btn-del-text:  #b91c1c;
     }
 
     body {
       font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='24' viewBox='0 0 80 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12 C20 4 40 20 80 12' fill='none' stroke='rgba(10%2C126%2C154%2C0.055)' stroke-width='2'/%3E%3C/svg%3E");
+      background-size: 80px 24px;
       color: var(--text);
       min-height: 100vh;
-      transition: background 0.3s, color 0.3s;
+      transition: background-color 0.3s, color 0.3s;
     }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) body { background-image: none; }
+    }
+    [data-theme="dark"] body { background-image: none; }
 
     /* ── Header ─────────────────────────────── */
     .trip-header {
       background:
-        radial-gradient(ellipse 65% 55% at 92% 5%, rgba(26,200,215,0.18) 0%, transparent 62%),
-        radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px),
+        radial-gradient(ellipse 55% 50% at 95% 8%,  rgba(0,220,210,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 35% at 4%  92%, rgba(255,200,80,0.12) 0%, transparent 55%),
+        radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
         linear-gradient(150deg, var(--header-from) 0%, var(--header-mid) 55%, var(--header-to) 100%);
-      background-size: auto, 22px 22px, 100% 100%;
+      background-size: auto, auto, 22px 22px, 100% 100%;
       color: var(--header-text, #fff);
       padding: 30px 20px 54px;
       position: relative;
@@ -618,7 +625,7 @@
       white-space: nowrap;
       height: 38px;
     }
-    .cmt-submit:hover { background: #1E3A5F; }
+    .cmt-submit:hover { background: #07687e; }
 
     .cmt-meta-right {
       display: flex;
@@ -1100,7 +1107,199 @@
       border-color: var(--primary);
       color: #fff;
     }
-    .cl-text { font-size: 0.875rem; }
+    .cl-text { font-size: 0.875rem; flex: 1; min-width: 0; }
+
+    .cl-filter-bar {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 2px 12px;
+    }
+    .cl-filter-bar::-webkit-scrollbar { display: none; }
+    .cl-filter-chip {
+      flex-shrink: 0;
+      padding: 5px 13px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .cl-filter-chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .cl-assign {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .cl-assign-btn {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      font-size: 0.875rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.15s, background 0.15s, transform 0.15s;
+      padding: 0;
+      line-height: 1;
+    }
+    .cl-assign-btn.on {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      transform: scale(1.12);
+    }
+    .cl-item { align-items: center; }
+
+    /* ── 관광지 투표 ─────────────────────────────── */
+    .vote-who-bar {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 2px 14px;
+    }
+    .vote-who-bar::-webkit-scrollbar { display: none; }
+    .vote-who-chip {
+      flex-shrink: 0;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .vote-who-chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .vote-summary-wrap {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      font-size: 0.8125rem;
+    }
+    .vote-summary-label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+    .vote-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .vote-card-body {
+      padding: 16px 16px 12px;
+    }
+    .vote-card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .vote-spot-icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+    .vote-spot-name { font-size: 1rem; font-weight: 700; }
+    .vote-cat-chip {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 20px;
+      padding: 2px 8px;
+      flex-shrink: 0;
+    }
+    .vote-spot-desc {
+      font-size: 0.8125rem;
+      color: var(--act-desc);
+      line-height: 1.65;
+      margin-bottom: 6px;
+    }
+    .vote-spot-tip {
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      line-height: 1.55;
+    }
+    .vote-btn-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .vote-btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: var(--rsm);
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s;
+      color: var(--muted);
+    }
+    .vote-btn:disabled { opacity: 0.45; cursor: default; }
+    .vote-btn.go.on  {
+      background: #e8f5e9; border-color: #4caf50; color: #2e7d32;
+    }
+    .vote-btn.pass.on {
+      background: #fff3e0; border-color: #ff9800; color: #e65100;
+    }
+    [data-theme="dark"] .vote-btn.go.on   { background: #1a3320; border-color: #4caf50; color: #81c784; }
+    [data-theme="dark"] .vote-btn.pass.on { background: #2a1f0a; border-color: #ff9800; color: #ffb74d; }
+    .vote-result-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding: 10px 16px;
+    }
+    .vote-result-chip {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.8125rem;
+      padding: 2px 0;
+    }
+    .vote-result-emoji { font-size: 1rem; line-height: 1; }
+    .vote-result-icon  { font-size: 0.8125rem; }
+    .vote-result-icon.go   { color: #4caf50; }
+    .vote-result-icon.pass { color: #ff9800; }
+    .vote-result-icon.none { color: var(--border); }
+    .vote-notice {
+      text-align: center;
+      padding: 10px;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      background: var(--bg);
+      border-radius: var(--rsm);
+      margin-bottom: 14px;
+    }
 
     .info-empty {
       text-align: center;
@@ -1193,6 +1392,29 @@
     }
     .t-icon { font-size: 0.875rem; line-height: 1; }
 
+    .font-sz-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 20px;
+      padding: 3px 10px;
+      min-width: 40px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+      user-select: none;
+      color: var(--header-text);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+    .font-sz-btn:hover  { background: rgba(255,255,255,0.26); }
+    .font-sz-btn.fsz-on { background: rgba(255,255,255,0.28); border-color: rgba(255,255,255,0.55); }
+
     /* ── Mobile ──────────────────────────────── */
     @media (max-width: 600px) {
       .trip-header    { padding: 20px 16px 44px; }
@@ -1222,6 +1444,85 @@
     }
 
     /* ── 편지 보드 ──────────────────────────────── */
+    /* ── 투표 탭 ─────────────────────────── */
+    .vote-who-bar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 16px; overflow-x: auto;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: var(--bg); z-index: 5;
+    }
+    .vote-who-bar::-webkit-scrollbar { display: none; }
+    .vote-who-label { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+    .vote-who-btn {
+      display: flex; align-items: center; gap: 4px;
+      padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+      background: var(--card); color: var(--text); font-size: 0.85rem;
+      cursor: pointer; white-space: nowrap; transition: all .15s;
+    }
+    .vote-who-btn.active {
+      background: var(--primary); color: #fff; border-color: var(--primary);
+    }
+    .vote-summary {
+      text-align: center; padding: 10px 16px;
+      font-size: 0.85rem; color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .vote-summary strong { color: var(--primary); }
+    .vote-card {
+      background: var(--card); border-radius: 14px;
+      padding: 16px; margin: 12px 16px;
+      box-shadow: var(--shadow);
+    }
+    .vote-card-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+    }
+    .vote-card-emoji { font-size: 1.6rem; flex-shrink: 0; }
+    .vote-card-title-wrap { flex: 1; min-width: 0; }
+    .vote-card-name { font-size: 1rem; font-weight: 700; color: var(--text); display: block; }
+    .vote-cat-chip {
+      display: inline-block; font-size: 0.7rem; padding: 2px 8px;
+      border-radius: 10px; background: var(--primary-light); color: var(--primary);
+      margin-top: 2px; font-weight: 600;
+    }
+    .vote-go-badge {
+      flex-shrink: 0; font-size: 0.78rem; color: var(--muted);
+      background: var(--bg); border-radius: 10px; padding: 3px 8px;
+    }
+    .vote-go-badge.has-votes { color: #0a7e5a; background: #d4f5e9; }
+    .vote-card-desc {
+      font-size: 0.85rem; color: var(--text); margin: 0 0 6px;
+      line-height: 1.6;
+    }
+    .vote-card-tip {
+      font-size: 0.8rem; color: var(--muted); margin: 0 0 10px;
+      line-height: 1.5;
+    }
+    .vote-bar {
+      height: 4px; background: var(--border); border-radius: 4px;
+      margin-bottom: 10px; overflow: hidden;
+    }
+    .vote-bar-fill {
+      height: 100%; background: var(--primary); border-radius: 4px;
+      transition: width .4s ease;
+    }
+    .vote-btn-row { display: flex; gap: 8px; margin-bottom: 10px; }
+    .vote-btn {
+      flex: 1; padding: 9px; border-radius: 10px; border: 1.5px solid var(--border);
+      background: var(--bg); color: var(--text);
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      transition: all .15s;
+    }
+    .vote-btn:disabled { opacity: .45; cursor: not-allowed; }
+    .vote-btn.go.active  { background: #d4f5e9; border-color: #0a7e5a; color: #0a7e5a; }
+    .vote-btn.pass.active { background: #fff3cd; border-color: #b08a00; color: #7a6000; }
+    .vote-result-row {
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+    .vote-react-item {
+      font-size: 0.85rem; background: var(--bg);
+      border-radius: 8px; padding: 3px 7px;
+    }
+
     .letter-page { padding: 16px; max-width: 560px; margin: 0 auto; }
 
     .letter-hero {
@@ -1823,7 +2124,7 @@
   <div class="splash-year">VIETNAM · 2026</div>
   <div class="splash-divider"><span class="splash-divider-icon">✨</span></div>
   <div class="splash-title">아빠 환갑기념 🎉<br>우리 가족 여행</div>
-  <div class="splash-date">9.11(금) — 9.14(월) · 2박 4일</div>
+  <div class="splash-date">9.11(금) — 9.15(화) · 4박 5일</div>
   <div class="splash-tagline">함께라서 더 특별한 여정 💛</div>
   <div class="splash-family">
     <div class="sf-char">
@@ -1863,19 +2164,20 @@
           <span class="dday-chip" id="chipDday">--</span>
         </div>
         <div class="participants" id="participants"></div>
-        <div class="bday-banner">🎂 아빠의 환갑을 온 가족이 함께 축하하는 특별한 여정 ❤️</div>
+        <div class="bday-banner">🎂 아빠 생신 축하드립니다 ❤️</div>
       </div>
-      <div style="flex-shrink:0">
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:8px">
         <button class="theme-toggle" id="themeToggle" title="라이트/다크 모드 전환">
           <div class="t-track"><div class="t-thumb" id="tThumb"></div></div>
         </button>
+        <button class="font-sz-btn" id="fontSzBtn" title="글자 크기 조절">가</button>
       </div>
     </div>
   </header>
 
   <!-- ── Section + Day Nav ── -->
   <div class="sticky-navs">
-    <nav class="section-nav">
+    <nav class="section-nav" id="sectionNav">
       <button class="sec-tab active" id="secTab-schedule"  onclick="switchSection('schedule')" >🗓 일정</button>
       <button class="sec-tab"        id="secTab-flight"    onclick="switchSection('flight')"   >✈️ 항공정보</button>
       <button class="sec-tab"        id="secTab-hotel"     onclick="switchSection('hotel')"    >🏨 숙소정보</button>
@@ -1883,6 +2185,7 @@
       <button class="sec-tab"        id="secTab-info"      onclick="switchSection('info')"     >📋 여행정보</button>
       <button class="sec-tab"        id="secTab-checklist" onclick="switchSection('checklist')">☑️ 준비물</button>
       <button class="sec-tab"        id="secTab-letter"    onclick="switchSection('letter')"   >💌 편지</button>
+      <button class="sec-tab"        id="secTab-vote"      onclick="switchSection('vote')"     >🗳 투표</button>
     </nav>
     <div class="day-nav-wrap" id="dayNavWrap">
       <nav class="day-nav" id="dayNav"></nav>
@@ -1900,27 +2203,6 @@
   <div id="viewFlight" style="display:none">
     <main class="main-content">
 
-      <div class="booking-info-card">
-        <div class="booking-row">
-          <div class="booking-kv">
-            <span class="bk-label">투어비스 예약번호</span>
-            <span class="bk-val">C15004773849</span>
-          </div>
-          <span class="bk-status-badge">발권완료</span>
-        </div>
-        <div class="flight-divider"></div>
-        <div class="booking-row">
-          <div class="booking-kv">
-            <span class="bk-label">항공사 예약번호(PNR)</span>
-            <span class="bk-val">P2G53X</span>
-          </div>
-          <div class="booking-kv">
-            <span class="bk-label">예약일</span>
-            <span class="bk-val">2025.12.20(토)</span>
-          </div>
-        </div>
-      </div>
-
       <div class="flight-leg-title">
         2026년 9월 11일 금요일
         <span class="direction-chip">가는편</span>
@@ -1929,19 +2211,19 @@
       <div class="flight-card">
         <div class="flight-card-top">
           <span class="flight-card-date">9월 11일(금)</span>
-          <span class="flight-dur-chip">🕐 4시간 35분</span>
+          <span class="flight-dur-chip">🕐 4시간 45분</span>
         </div>
         <div class="flight-route">
           <div class="flight-endpoint">
             <div class="f-time">20:55</div>
-            <div class="f-airport">ICN 인천국제공항 T2</div>
+            <div class="f-airport">ICN 인천국제공항 T1</div>
           </div>
           <div class="flight-arrow-wrap">
             <div class="flight-arrow-line"></div>
             <span>→</span>
           </div>
           <div class="flight-endpoint right">
-            <div class="f-time">23:30</div>
+            <div class="f-time">23:40</div>
             <div class="f-airport">DAD 다낭국제공항 T2</div>
           </div>
         </div>
@@ -1953,21 +2235,26 @@
           <span class="f-detail-chip">일반석(C)</span>
           <span class="f-detail-chip">무료 수하물 15kg</span>
         </div>
+        <div class="flight-divider"></div>
+        <div class="flight-details">
+          <span class="f-detail-chip">웹투어 예약번호 1900175</span>
+          <span class="f-detail-chip">PNR U47AY5</span>
+        </div>
       </div>
 
       <div class="flight-leg-title">
-        2026년 9월 14일 월요일
+        2026년 9월 15일 화요일
         <span class="direction-chip">오는편</span>
         다낭 → 서울(인천)
       </div>
       <div class="flight-card">
         <div class="flight-card-top">
-          <span class="flight-card-date">9월 14일(월)</span>
-          <span class="flight-dur-chip">🕐 4시간 35분</span>
+          <span class="flight-card-date">9월 15일(화)</span>
+          <span class="flight-dur-chip">🕐 4시간 45분</span>
         </div>
         <div class="flight-route">
           <div class="flight-endpoint">
-            <div class="f-time">00:30</div>
+            <div class="f-time">01:50</div>
             <div class="f-airport">DAD 다낭국제공항 T2</div>
           </div>
           <div class="flight-arrow-wrap">
@@ -1975,8 +2262,8 @@
             <span>→</span>
           </div>
           <div class="flight-endpoint right">
-            <div class="f-time">07:05</div>
-            <div class="f-airport">ICN 인천국제공항 T2</div>
+            <div class="f-time">08:25</div>
+            <div class="f-airport">ICN 인천국제공항 T1</div>
           </div>
         </div>
         <div class="flight-divider"></div>
@@ -1986,6 +2273,11 @@
           <span class="f-detail-chip">Airbus A321</span>
           <span class="f-detail-chip">일반석(T)</span>
           <span class="f-detail-chip">무료 수하물 15kg</span>
+        </div>
+        <div class="flight-divider"></div>
+        <div class="flight-details">
+          <span class="f-detail-chip">웹투어 예약번호 1900176</span>
+          <span class="f-detail-chip">PNR MP6296</span>
         </div>
       </div>
 
@@ -2057,10 +2349,65 @@
   <!-- ── 숙소정보 View ── -->
   <div id="viewHotel" style="display:none">
     <main class="main-content">
-      <div class="info-empty">
-        <div class="info-empty-icon">🏨</div>
-        <p>숙소 정보를 추가할 예정이에요.</p>
+
+      <div class="booking-info-card">
+        <div class="booking-row">
+          <div class="booking-kv">
+            <span class="bk-label">숙소명</span>
+            <span class="bk-val">쉐라톤 그랜드 다낭 비치 리조트 & 스파</span>
+          </div>
+          <span class="bk-status-badge">예약완료</span>
+        </div>
+        <div class="flight-divider"></div>
+        <div class="booking-row">
+          <div class="booking-kv">
+            <span class="bk-label">체크인</span>
+            <span class="bk-val">15:00~</span>
+          </div>
+          <div class="booking-kv">
+            <span class="bk-label">체크아웃</span>
+            <span class="bk-val">~12:00</span>
+          </div>
+        </div>
       </div>
+
+      <div class="info-block open">
+        <div class="info-block-header" onclick="this.closest('.info-block').classList.toggle('open')">
+          <span class="info-block-icon">✈️</span>
+          <span class="info-block-title">공항과의 거리</span>
+          <span class="info-block-arrow">▾</span>
+        </div>
+        <div class="info-block-body">
+          <div class="info-row"><span class="info-row-label">거리</span><span class="info-row-val">약 14km</span></div>
+          <div class="info-row"><span class="info-row-label">소요시간</span><span class="info-row-val">차로 약 25분</span></div>
+          <div class="info-row"><span class="info-row-label">Grab 요금</span><span class="info-row-val">약 15~20만동</span></div>
+        </div>
+      </div>
+
+      <div class="info-block open">
+        <div class="info-block-header" onclick="this.closest('.info-block').classList.toggle('open')">
+          <span class="info-block-icon">🍳</span>
+          <span class="info-block-title">조식 정보</span>
+          <span class="info-block-arrow">▾</span>
+        </div>
+        <div class="info-block-body">
+          <div class="info-row"><span class="info-row-label">장소</span><span class="info-row-val">TABLE 88</span></div>
+          <div class="info-row"><span class="info-row-label">이용시간</span><span class="info-row-val">06:30 ~ 10:30</span></div>
+        </div>
+      </div>
+
+      <div class="info-block open">
+        <div class="info-block-header" onclick="this.closest('.info-block').classList.toggle('open')">
+          <span class="info-block-icon">🏊</span>
+          <span class="info-block-title">수영장 정보</span>
+          <span class="info-block-arrow">▾</span>
+        </div>
+        <div class="info-block-body">
+          <div class="info-row"><span class="info-row-label">종류</span><span class="info-row-val">인피니티풀 (다낭 최장 250m)</span></div>
+          <div class="info-row"><span class="info-row-label">이용시간</span><span class="info-row-val">07:00 ~ 19:00</span></div>
+        </div>
+      </div>
+
     </main>
   </div>
 
@@ -2107,8 +2454,8 @@
       </div>
       <div class="flight-card">
         <div class="flight-card-top">
-          <span class="flight-card-date">하계역 → 인천공항 T2</span>
-          <span class="flight-dur-chip">🎯 T2 18:30 집결</span>
+          <span class="flight-card-date">하계역 → 인천공항 T1</span>
+          <span class="flight-dur-chip">🎯 T1 18:30 집결</span>
         </div>
         <div class="flight-route">
           <div class="flight-endpoint">
@@ -2120,13 +2467,13 @@
             <span>→</span>
           </div>
           <div class="flight-endpoint right">
-            <div class="f-time" style="font-size:1.125rem">인천 T2</div>
-            <div class="f-airport">B1층 22·21번 하차</div>
+            <div class="f-time" style="font-size:1.125rem">인천 T1</div>
+            <div class="f-airport">B1층 정류장 번호 확인필요</div>
           </div>
         </div>
         <div class="flight-divider"></div>
         <div class="flight-details">
-          <span class="f-detail-chip">T2까지 약 110분</span>
+          <span class="f-detail-chip">T1까지 약 90분</span>
           <span class="f-detail-chip">출퇴근 시간대 정체 주의</span>
           <span class="f-detail-chip">공항행 막차 20:00</span>
         </div>
@@ -2134,18 +2481,18 @@
 
       <!-- 귀국일 -->
       <div class="flight-leg-title">
-        9월 14일(월) — 귀국
+        9월 15일(화) — 귀국
         <span class="direction-chip">공항 → 집</span>
       </div>
       <div class="flight-card">
         <div class="flight-card-top">
-          <span class="flight-card-date">인천공항 T2 → 하계역</span>
-          <span class="flight-dur-chip">✈️ T2 도착 07:05</span>
+          <span class="flight-card-date">인천공항 T1 → 하계역</span>
+          <span class="flight-dur-chip">✈️ T1 도착 08:25</span>
         </div>
         <div class="flight-route">
           <div class="flight-endpoint">
-            <div class="f-time" style="font-size:1.125rem">인천 T2</div>
-            <div class="f-airport">B1층 92641번 승강장<br>수하물 후 07:30~08:00 예상</div>
+            <div class="f-time" style="font-size:1.125rem">인천 T1</div>
+            <div class="f-airport">B1층 정류장 번호 확인필요<br>수하물 후 08:50~09:15 예상</div>
           </div>
           <div class="flight-arrow-wrap">
             <div class="flight-arrow-line"></div>
@@ -2158,8 +2505,8 @@
         </div>
         <div class="flight-divider"></div>
         <div class="flight-details">
-          <span class="f-detail-chip">T2 첫차 06:10</span>
-          <span class="f-detail-chip">시내까지 약 90~110분</span>
+          <span class="f-detail-chip">T1 첫차 06:30</span>
+          <span class="f-detail-chip">시내까지 약 90분 내외</span>
           <span class="f-detail-chip">수하물 수취 20~30분 소요</span>
         </div>
       </div>
@@ -2172,8 +2519,8 @@
           <span class="info-block-arrow">▾</span>
         </div>
         <div class="info-block-body">
-          <div class="info-row"><span class="info-row-label">① 출발</span><span class="info-row-val">인천공항 T2 (B1층 92641번)</span></div>
-          <div class="info-row"><span class="info-row-label">②</span><span class="info-row-val">인천공항 T1 경유</span></div>
+          <div class="info-row"><span class="info-row-label">① 경유</span><span class="info-row-val">인천공항 T2</span></div>
+          <div class="info-row"><span class="info-row-label">② 출발 ★</span><span class="info-row-val"><strong>인천공항 T1</strong> (B1층 정류장 번호 확인필요, 우리 탑승)</span></div>
           <div class="info-row"><span class="info-row-label">③</span><span class="info-row-val">수락터미널</span></div>
           <div class="info-row"><span class="info-row-label">④</span><span class="info-row-val">노일초교</span></div>
           <div class="info-row"><span class="info-row-label">⑤</span><span class="info-row-val">마들역</span></div>
@@ -2215,7 +2562,7 @@
           <span class="info-block-arrow">▾</span>
         </div>
         <div class="info-block-body">
-          <div class="info-row"><span class="info-row-label">운행 순서</span><span class="info-row-val">T2 먼저 출발 → T1 경유 → 시내</span></div>
+          <div class="info-row"><span class="info-row-label">운행 순서</span><span class="info-row-val">T2 먼저 경유 → <strong>T1(우리 탑승)</strong> → 시내</span></div>
           <div class="info-row"><span class="info-row-label">정체 시간대</span><span class="info-row-val">07~09시, 17~19시 출퇴근 시간 주의</span></div>
           <div class="info-row"><span class="info-row-label">문의</span><span class="info-row-val">한국도심공항 02-551-0077~8</span></div>
         </div>
@@ -2236,18 +2583,18 @@
         <div class="info-block-body" style="display:block">
           <div class="cc-row">
             <div class="cc-field">
-              <label class="cc-label">🇰🇷 원화 (KRW)</label>
-              <div class="cc-input-wrap">
-                <span class="cc-unit">₩</span>
-                <input type="text" id="ccKrw" class="cc-input" placeholder="0" inputmode="numeric" oninput="convertCurrency('krw')" value="10,000">
-              </div>
-            </div>
-            <span class="cc-arrow">⇄</span>
-            <div class="cc-field">
               <label class="cc-label">🇻🇳 동 (VND)</label>
               <div class="cc-input-wrap">
                 <span class="cc-unit">₫</span>
                 <input type="text" id="ccVnd" class="cc-input" placeholder="0" inputmode="numeric" oninput="convertCurrency('vnd')" value="170,000">
+              </div>
+            </div>
+            <span class="cc-arrow">⇄</span>
+            <div class="cc-field">
+              <label class="cc-label">🇰🇷 원화 (KRW)</label>
+              <div class="cc-input-wrap">
+                <span class="cc-unit">₩</span>
+                <input type="text" id="ccKrw" class="cc-input" placeholder="0" inputmode="numeric" oninput="convertCurrency('krw')" value="10,000">
               </div>
             </div>
           </div>
@@ -2389,6 +2736,10 @@
   <!-- ── 편지 View ── -->
   <div id="viewLetter" style="display:none">
     <div class="letter-page" id="letterPage"></div>
+  </div>
+
+  <div id="viewVote" style="display:none">
+    <main class="main-content" id="voteContent"></main>
   </div>
 
 </div>
@@ -2570,6 +2921,32 @@ const TRIP_ID = 'danang-2026-0911'; // 여행 ID (여러 여행 관리 시 변�
   });
 })();
 
+/* ── 글자 크기 ───────────────────────────────── */
+(function () {
+  const SIZES  = ['default', 'large', 'xl'];
+  const LABELS = { default: '가', large: '가+', xl: '가++' };
+  /* em 단위: html 요소에서 em = 브라우저/폰 기본 폰트 크기 → 폰 설정 자동 반영 */
+  const SCALES = { default: '', large: '1.2em', xl: '1.45em' };
+
+  function applyFontSize(size) {
+    document.documentElement.style.fontSize = SCALES[size];
+    const btn = document.getElementById('fontSzBtn');
+    if (btn) {
+      btn.textContent = LABELS[size];
+      btn.classList.toggle('fsz-on', size !== 'default');
+    }
+    localStorage.setItem('tn-fontsize', size);
+  }
+
+  applyFontSize(localStorage.getItem('tn-fontsize') || 'default');
+
+  document.getElementById('fontSzBtn').addEventListener('click', () => {
+    const cur  = localStorage.getItem('tn-fontsize') || 'default';
+    const next = SIZES[(SIZES.indexOf(cur) + 1) % SIZES.length];
+    applyFontSize(next);
+  });
+})();
+
 /* ── 앱 상태 ─────────────────────────────────── */
 let db = null;
 let fbReady = false;
@@ -2581,6 +2958,72 @@ let comments = {};          // { activityId: [comment, ...] }
 let cmtListeners = {};      // 댓글 실시간 리스너 해제 함수
 let unsubActs = null;
 let checklistData = {};     // { itemId: bool }
+let assignData    = {};     // { itemId: string[] }  e.g. { cl01: ['mom','seo'] }
+let clFilter      = 'all'; // 현재 필터 키
+
+const MEMBERS = [
+  { key: 'mom', emoji: '👩🏻', name: '엄마' },
+  { key: 'dad', emoji: '👨🏻', name: '아빠' },
+  { key: 'seo', emoji: '👧🏻', name: '서현' },
+  { key: 'yb',  emoji: '👦🏻', name: '영빈' },
+];
+
+/* ── 관광지 투표 데이터 ──────────────────────── */
+let voteData  = {};  // { spotId: { memberKey: 'go'|'pass'|null } }
+let myVoteKey = localStorage.getItem('ftVoteAs') || '';
+
+const SPOTS = [
+  {
+    id:'vp01', emoji:'🚡', name:'바나힐', cat:'테마파크',
+    desc:'해발 1,487m 케이블카로 올라가는 프랑스풍 테마파크. 손 모양의 황금 골든 브릿지가 유명해 인스타 성지로 불림.',
+    tip:'⏱ 왕복 케이블카 포함 약 4~5시간. 입장료 약 75만동/인. 오전 일찍 방문 권장.'
+  },
+  {
+    id:'vp02', emoji:'🏮', name:'호이안 구시가지', cat:'문화유산',
+    desc:'유네스코 세계문화유산. 형형색색 등불이 강을 수놓는 야경이 일품. 다낭에서 차로 약 40분.',
+    tip:'⏱ 야경을 보려면 저녁 6시 이후 방문. 보행자 전용구역 입장권 약 12만동.'
+  },
+  {
+    id:'vp03', emoji:'🏖️', name:'미케 비치', cat:'해변',
+    desc:'CNN 선정 세계 6대 아름다운 해변 중 하나. 리조트 앞이라 접근성이 좋고 파도가 잔잔해 수영하기 좋음.',
+    tip:'☀️ 9월은 아직 수영 가능. 선베드 대여 약 5만동. 이른 아침이 가장 조용함.'
+  },
+  {
+    id:'vp04', emoji:'🌉', name:'한강 용다리(드래곤 브릿지)', cat:'야경',
+    desc:'다낭의 상징. 매주 토요일·일요일 밤 9시에 입에서 불과 물을 내뿜는 쇼 진행.',
+    tip:'🔥 쇼는 토·일 밤 9시 단 15분. 이날 놓치면 다시 없음! 미리 자리 잡기.'
+  },
+  {
+    id:'vp05', emoji:'⛪', name:'핑크 대성당(다낭 대성당)', cat:'명소',
+    desc:'1923년 건축된 핑크빛 첨탑 성당. 구시가지 중심에 위치해 접근성 좋음. 미사 시간 제외 자유 관람 가능.',
+    tip:'📸 이른 아침이나 석양 무렵 사진이 예쁨. 입장 무료.'
+  },
+  {
+    id:'vp06', emoji:'⛰️', name:'오행산(마블 마운틴)', cat:'자연',
+    desc:'다낭 시내에서 12km, 대리석 절벽에 불교 동굴 사원이 숨어있는 신비로운 산. 엘리베이터 이용 가능.',
+    tip:'🎟 입장료 약 4만동. 엘리베이터 별도 1.5만동. 동굴 내부는 서늘해 여름에도 시원함.'
+  },
+  {
+    id:'vp07', emoji:'🎡', name:'아시아 파크(선 월드)', cat:'테마파크',
+    desc:'다낭 한강변 대형 테마파크. 롤러코스터, 대관람차, 야외 수영장 등 다양. 야간 운영.',
+    tip:'🌙 야간 조명이 예쁨. 입장+놀이기구 통합권 약 20만동/인. 저녁 4시 이후 추천.'
+  },
+  {
+    id:'vp08', emoji:'🏛️', name:'미산 성지', cat:'문화유산',
+    desc:'4~14세기 참파 왕국의 힌두교 유적. 유네스코 세계문화유산. 다낭에서 차로 약 1시간 30분.',
+    tip:'⏱ 왕복 이동+관람 최소 4시간. 투어 버스 이용 권장. 한낮 더위 주의.'
+  },
+  {
+    id:'vp09', emoji:'🏺', name:'참 조각 박물관', cat:'박물관',
+    desc:'세계 최대 규모의 참파 유물 전시관. 다낭 시내 중심에 위치. 1~2시간이면 충분히 관람 가능.',
+    tip:'🎟 입장료 약 6만동. 에어컨 완비. 더운 날 오후 시간 활용하기 좋음.'
+  },
+  {
+    id:'vp10', emoji:'🛒', name:'한 시장', cat:'쇼핑',
+    desc:'다낭 대표 재래시장. 과일, 건어물, 기념품, 현지 의류 등 구매 가능. 흥정 필수.',
+    tip:'💰 이른 아침이 신선한 과일 구하기 좋음. 가격 표시 없으면 무조건 흥정.'
+  },
+];
 
 const CHECKLIST = [
   { id:'cl01', cat:'📄 여권·서류', text:'여권 (유효기간 6개월 이상 확인)' },
@@ -2624,30 +3067,30 @@ const BOOKING = {
 
 /* ── 샘플 데이터 ──────────────────────────────── */
 const SAMPLE_INFO = {
-  title: '아빠 환갑기념 다낭 가족여행 ✈️',
+  title: '2026 베트남 다낭 가족 여행',
   destination: '베트남 다낭',
   startDate: '2026-09-11',
-  endDate:   '2026-09-14',
+  endDate:   '2026-09-15',
   participants: ['👩🏻 엄마','👨🏻 아빠','👧🏻 서현','👦🏻 영빈'],
   adminPasswordHash: ''
 };
 
 const SAMPLE_ACTS = [
   // ── Day 1: 9/11(금) 출발 ──
-  { id:'s1',  day:0, time:'18:30', category:'flight',    title:'인천공항 집결',                description:'2시간 30분 전 집결. 탑승권 발권·수하물 위탁 후 면세점 자유 시간', location:'인천국제공항 T2',    cost:'',          bookingStatus:'confirmed', order:0 },
-  { id:'s2',  day:0, time:'20:55', category:'flight',    title:'인천 → 다낭 탑승',             description:'에어서울 RS0511. 비행 4시간 35분',                                 location:'인천국제공항 T2',    cost:'왕복 포함', bookingStatus:'confirmed', order:1 },
-  { id:'s3',  day:0, time:'23:30', category:'transport', title:'다낭 공항 도착 · 리조트 이동', description:'입국심사 후 픽업 차량으로 리조트 이동 (약 20분)',                   location:'다낭 국제공항 T2',   cost:'픽업 포함', bookingStatus:'confirmed', order:2 },
-  { id:'s4',  day:0, time:'24:00', category:'hotel',     title:'리조트 체크인',                description:'늦은 도착 사전 안내 완료. 짐 풀고 바로 휴식',                     location:'풀빌라 리조트',      cost:'',          bookingStatus:'confirmed', order:3 },
+  { id:'s1',  day:0, time:'17:00', category:'flight',    icon:'👨🏻‍👩🏻‍👧🏻‍👦🏻', title:'인천공항 집결',                description:'비행기 시간이 늦으니 여유롭게 도착해서, 저녁 공항에서 같이 먹고 출발', location:'인천국제공항 T1',    cost:'',          bookingStatus:'confirmed', order:0 },
+  { id:'s2',  day:0, time:'20:55', category:'flight',    title:'인천 → 다낭 탑승',             description:'에어서울 RS0511. 비행 4시간 45분',                                 location:'인천국제공항 T1',    cost:'왕복 포함', bookingStatus:'confirmed', order:1 },
+  { id:'s3',  day:0, time:'23:40', category:'transport', title:'다낭 공항 도착 · 리조트 이동', description:'쉐라톤 그랜드 다낭까지 약 14km · 차로 25분. 심야라 Grab 배차 지연될 수 있음 — 안 잡히면 공항 택시 이용', location:'다낭 국제공항 T2',   cost:'Grab 약 15~20만동', bookingStatus:'confirmed', order:2 },
+  { id:'s4',  day:0, time:'24:00', category:'hotel',     title:'숙소 체크인',                  description:'늦은 도착 후 취침',                     location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'',          bookingStatus:'confirmed', order:3 },
 
   // ── Day 2: 9/12(토) 리조트 풀 데이 🏊 ──
-  { id:'s5',  day:1, time:'09:00', category:'food',      title:'리조트 조식',                  description:'여유로운 뷔페 조식. 서두르지 말고 느긋하게 🍳',                  location:'리조트 레스토랑',    cost:'포함',      bookingStatus:'confirmed', order:0 },
-  { id:'s6',  day:1, time:'10:30', category:'activity',  title:'풀빌라 수영',                  description:'프라이빗 풀에서 자유롭게 🏊 오늘의 메인!',                       location:'풀빌라',             cost:'포함',      bookingStatus:'confirmed', order:1 },
-  { id:'s7',  day:1, time:'14:00', category:'activity',  title:'리조트 스파',                  description:'베트남 전통 마사지 60~90분. 반드시 사전 예약!',                  location:'리조트 스파',        cost:'~5만원/인', bookingStatus:'pending',   order:2 },
-  { id:'s8',  day:1, time:'17:00', category:'rest',      title:'선베드 휴식',                  description:'저녁 외출 전 리조트에서 재충전. 칵테일 한 잔 🍹',               location:'리조트 풀사이드',    cost:'자유',      bookingStatus:'planned',   order:3 },
-  { id:'s9',  day:1, time:'18:30', category:'transport', title:'시내 이동',                    description:'Grab으로 시내까지 약 15~20분',                                   location:'리조트 → 시내',      cost:'Grab',      bookingStatus:'planned',   order:4 },
+  { id:'s5',  day:1, time:'09:00', category:'food',      title:'조식',                         description:'조식 이용시간 06:30 - 10:30',                                    location:'TABLE 88',           cost:'조식 포함', bookingStatus:'confirmed', order:1788486131068 },
+  { id:'ogAy4ZHzLFC8fwl2mzcD', day:1, time:'09:00', category:'sight', title:'한시장 쇼핑',      description:'첫 날 옷 쇼핑해서 입고다니기 👕 옷 많이챙겨오지 마~',            location:'한시장',              cost:'-',         bookingStatus:'confirmed', order:1788486605389 },
+  { id:'s6',  day:1, time:'10:30', category:'activity',  title:'인피니티풀 수영',              description:'프라이빗 풀에서 자유롭게 수영 🏊 DAY2 일정의 메인 😊 \n이용시간 07:00 - 19:00', location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'포함', bookingStatus:'confirmed', order:1788486145117 },
+  { id:'s8',  day:1, time:'13:00', category:'food',      title:'선베드 휴식 및 간단 점심',      description:'수영장 옆 BAR에서 간단식사 🍹 메뉴는 피자, 수제버거, 파스타',    location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'-', bookingStatus:'planned', order:1788486303665 },
+  { id:'s9',  day:1, time:'16:00', category:'transport', title:'시내 이동',                    description:'Grab으로 시내까지 약 15~20분',                                   location:'리조트 → 시내',      cost:'Grab',      bookingStatus:'planned',   order:1788486322048 },
   { id:'s10', day:1, time:'19:00', category:'food',      title:'저녁 – 씨푸드',                description:'신선한 랍스터·새우·조개 코스. 1인 4~6만원대',                    location:'씨푸드 레스토랑',    cost:'~6만원/인', bookingStatus:'planned',   order:5 },
-  { id:'s11', day:1, time:'21:00', category:'sight',     title:'용다리 불·물 쇼 🔥',           description:'토요일 밤 9시에만! 불꽃·물 뿜는 쇼. 이날 놓치면 없음!',         location:'한강 용다리',        cost:'무료',      bookingStatus:'planned',   order:6 },
-  { id:'s12', day:1, time:'22:30', category:'transport', title:'리조트 귀환',                  description:'Grab으로 복귀. 내일 체크아웃이니 짐 미리 챙겨두기',               location:'시내 → 리조트',      cost:'Grab',      bookingStatus:'planned',   order:7 },
+  { id:'s11', day:1, time:'21:00', category:'sight',     title:'용다리 불·물 쇼 🔥',           description:'토요일 밤 9시에만! 불꽃·물 뿜는 쇼.',                            location:'한강 용다리',        cost:'무료',      bookingStatus:'planned',   order:1788486350900 },
+  { id:'s12', day:1, time:'22:30', category:'transport', title:'리조트 복귀',                  description:'Grab으로 복귀',                                                  location:'시내 → 리조트',      cost:'Grab',      bookingStatus:'planned',   order:1788486362952 },
 
   // ── Day 3: 9/13(일) 체크아웃 + 시내 탐방 ──
   { id:'s13', day:2, time:'09:00', category:'activity',  title:'마지막 수영',                  description:'체크아웃 전 마지막 풀 타임 🏊 12시까지만 가능!',                 location:'풀빌라',             cost:'포함',      bookingStatus:'planned',   order:0 },
@@ -2659,9 +3102,9 @@ const SAMPLE_ACTS = [
   { id:'s19', day:2, time:'20:30', category:'transport', title:'리조트 이동 · 짐 픽업',        description:'맡겨둔 짐 찾고 공항으로 출발. 22:00 공항 도착 목표',              location:'리조트 → 다낭 공항', cost:'Grab/픽업', bookingStatus:'planned',   order:6 },
   { id:'s20', day:2, time:'22:00', category:'flight',    title:'다낭 공항 · 출국 수속',        description:'탑승 2시간 30분 전. 수하물 위탁·보안검사 후 면세점',              location:'다낭 국제공항 T2',   cost:'',          bookingStatus:'planned',   order:7 },
 
-  // ── Day 4: 9/14(월) 귀국 ──
-  { id:'s21', day:3, time:'00:30', category:'flight',    title:'다낭 → 인천 탑승',             description:'에어서울 RS0512. 심야 출발! 00:00 이전 탑승구 도착 필수',          location:'다낭 국제공항 T2',   cost:'왕복 포함', bookingStatus:'confirmed', order:0 },
-  { id:'s22', day:3, time:'07:05', category:'flight',    title:'인천공항 도착 · 해산',         description:'비행 4시간 35분. 수하물 수취 후 해산. 수고했어요 🎉',             location:'인천국제공항 T2',    cost:'',          bookingStatus:'confirmed', order:1 }
+  // ── Day 5: 9/15(화) 귀국 ──
+  { id:'s21', day:4, time:'01:50', category:'flight',    title:'다낭 → 인천 탑승',             description:'에어서울 RS0512. 심야 출발! 01:20 이전 탑승구 도착 필수',          location:'다낭 국제공항 T2',   cost:'왕복 포함', bookingStatus:'confirmed', order:0 },
+  { id:'s22', day:4, time:'08:25', category:'flight',    title:'인천공항 도착 · 해산',         description:'비행 4시간 45분. 수하물 수취 후 해산. 수고했어요 🎉',             location:'인천국제공항 T1',    cost:'',          bookingStatus:'confirmed', order:1 }
 ];
 
 /* ── Firebase 초기화 ──────────────────────────── */
@@ -2726,6 +3169,8 @@ function loadFromSample() {
   });
   comments = JSON.parse(localStorage.getItem('ftComments') || '{}');
   checklistData = JSON.parse(localStorage.getItem('ftChecklist') || '{}');
+  assignData    = JSON.parse(localStorage.getItem('ftAssign')    || '{}');
+  voteData      = JSON.parse(localStorage.getItem('ftVotes')     || '{}');
   renderApp();
 }
 
@@ -2734,10 +3179,13 @@ async function loadFromFirebase() {
   db.collection('trips').doc(TRIP_ID).onSnapshot(snap => {
     const data = snap.exists ? snap.data() : SAMPLE_INFO;
     tripData = data;
-    checklistData = data.checklist || {};
+    checklistData = data.checklist  || {};
+    assignData    = data.assignees  || {};
+    voteData      = data.votes      || {};
     if (!snap.exists) db.collection('trips').doc(TRIP_ID).set(SAMPLE_INFO);
     renderHeader();
     renderTabs();
+    renderVote();
   });
 
   // 일정 구독
@@ -2877,6 +3325,7 @@ function renderApp() {
   renderHeader();
   renderTabs();
   renderDayContent(curDay);
+  renderVote();
 }
 
 function renderHeader() {
@@ -2953,7 +3402,7 @@ function renderDayContent(di) {
 }
 
 function cardHtml(a, idx = 0) {
-  const icon    = CAT_ICONS[a.category] || '📌';
+  const icon    = a.icon || CAT_ICONS[a.category] || '📌';
   const bk      = BOOKING[a.bookingStatus] || BOOKING.planned;
   return `
     <div class="activity-card cat-${a.category||'other'}" id="card-${a.id}" style="animation-delay:${idx * 0.06}s">
@@ -3033,8 +3482,8 @@ const LETTER_PASSWORDS = {
   '👦🏻 영빈': '0303',
   '👨🏻 아빠': '6608'
 };
-// 귀국 비행기 인천 도착(07:05) + 1시간
-const LETTER_OPEN_DATE    = new Date('2026-09-14T08:05:00+09:00');
+// 귀국 비행기 인천 도착(08:25) + 1시간
+const LETTER_OPEN_DATE    = new Date('2026-09-15T09:25:00+09:00');
 const LETTER_PARTICIPANTS = ['👩🏻 엄마', '👨🏻 아빠', '👧🏻 서현', '👦🏻 영빈'];
 
 let letterData        = {}; // { docId: { id, from, to, title, content, createdAt, updatedAt } }
@@ -3353,10 +3802,14 @@ function listenLetters() {
 }
 
 /* ── 섹션 전환 ─────────────────────────────── */
-const SECTIONS = ['schedule','flight','hotel','bus','info','checklist','letter'];
+const SECTIONS = ['schedule','flight','hotel','bus','info','checklist','letter','vote'];
 
 // ✏️ 일정 공개 시 아래 값을 false 로 변경
-const SCHEDULE_LOCKED = true;
+const SCHEDULE_LOCKED = false;
+
+// ✏️ 전체 앱(일정/항공/숙소 등) 공개 시 아래 값을 false 로 변경
+// true인 동안 관리자 로그인 전에는 투표 화면만 보이고 다른 탭은 숨겨집니다.
+const INTRO_VOTE_ONLY = false;
 
 function viewId(s) {
   return 'view' + s[0].toUpperCase() + s.slice(1);
@@ -3375,6 +3828,7 @@ function switchSection(name) {
   document.getElementById('dayNavWrap').style.display = (name === 'schedule') ? '' : 'none';
   if (name === 'checklist') renderChecklist();
   if (name === 'letter') renderLetter();
+  if (name === 'vote')   renderVote();
   if (SCHEDULE_LOCKED) {
     const ov = document.getElementById('scheduleLockOverlay');
     if (ov) ov.style.display = name === 'schedule' ? 'flex' : 'none';
@@ -3400,27 +3854,49 @@ function switchSection(name) {
 function renderChecklist() {
   const el = document.getElementById('checklistContent');
   if (!el) return;
-  const total = CHECKLIST.length;
-  const done  = CHECKLIST.filter(i => checklistData[i.id]).length;
-  const pct   = total ? Math.round(done / total * 100) : 0;
-  const cats  = [...new Set(CHECKLIST.map(i => i.cat))];
+
+  const list   = clFilter === 'all'
+    ? CHECKLIST
+    : CHECKLIST.filter(i => (assignData[i.id] || []).includes(clFilter));
+  const total  = list.length;
+  const done   = list.filter(i => checklistData[i.id]).length;
+  const pct    = total ? Math.round(done / total * 100) : 0;
+  const cats   = [...new Set(list.map(i => i.cat))];
+  const fLabel = clFilter === 'all' ? '전체' : (MEMBERS.find(m => m.key === clFilter)?.name || '');
+
   el.innerHTML = `
+    <div class="cl-filter-bar">
+      <button class="cl-filter-chip ${clFilter === 'all' ? 'active' : ''}" onclick="setClFilter('all')">전체</button>
+      ${MEMBERS.map(m => `
+        <button class="cl-filter-chip ${clFilter === m.key ? 'active' : ''}" onclick="setClFilter('${m.key}')">
+          ${m.emoji} ${m.name}
+        </button>
+      `).join('')}
+    </div>
     <div class="cl-progress-wrap">
       <div class="cl-progress-label">
-        <span>준비 현황</span>
+        <span>준비 현황 ${clFilter !== 'all' ? `<span style="color:var(--primary);margin-left:4px">${fLabel}</span>` : ''}</span>
         <span>${done} / ${total} (${pct}%)</span>
       </div>
       <div class="cl-progress-track">
         <div class="cl-progress-bar" style="width:${pct}%"></div>
       </div>
     </div>
+    ${cats.length === 0 ? `<div style="text-align:center;padding:40px;color:var(--muted);font-size:0.875rem">배정된 항목이 없습니다</div>` : ''}
     ${cats.map(cat => `
       <div class="cl-section">
         <div class="cl-cat-title">${cat}</div>
-        ${CHECKLIST.filter(i => i.cat === cat).map(item => `
+        ${list.filter(i => i.cat === cat).map(item => `
           <div class="cl-item ${checklistData[item.id] ? 'checked' : ''}" onclick="toggleCheck('${item.id}')">
             <div class="cl-checkbox">${checklistData[item.id] ? '✓' : ''}</div>
             <span class="cl-text">${item.text}</span>
+            <div class="cl-assign" onclick="event.stopPropagation()">
+              ${MEMBERS.map(m => `
+                <button class="cl-assign-btn ${(assignData[item.id] || []).includes(m.key) ? 'on' : ''}"
+                        onclick="toggleAssign('${item.id}','${m.key}')"
+                        title="${m.name}">${m.emoji}</button>
+              `).join('')}
+            </div>
           </div>
         `).join('')}
       </div>
@@ -3456,6 +3932,125 @@ async function toggleCheck(itemId) {
   }
 }
 
+function setClFilter(key) {
+  clFilter = key;
+  renderChecklist();
+}
+
+async function toggleAssign(itemId, memberKey) {
+  if (!assignData[itemId]) assignData[itemId] = [];
+  const idx = assignData[itemId].indexOf(memberKey);
+  if (idx >= 0) assignData[itemId].splice(idx, 1);
+  else          assignData[itemId].push(memberKey);
+  renderChecklist();
+  if (fbReady) {
+    await db.collection('trips').doc(TRIP_ID).set(
+      { assignees: { [itemId]: assignData[itemId] } },
+      { merge: true }
+    );
+  } else {
+    localStorage.setItem('ftAssign', JSON.stringify(assignData));
+  }
+}
+
+/* ── 투표 ────────────────────────────────────── */
+function renderVote() {
+  const el = document.getElementById('voteContent');
+  if (!el) return;
+
+  /* ── 내 이름 선택 바 ── */
+  const whoBar = `
+    <div class="vote-who-bar">
+      <span class="vote-who-label">나는</span>
+      ${MEMBERS.map(m => `
+        <button class="vote-who-btn${myVoteKey === m.key ? ' active' : ''}"
+                onclick="selectVoter('${m.key}')">
+          ${m.emoji} ${m.name}
+        </button>`).join('')}
+    </div>`;
+
+  /* ── 요약 바 ── */
+  const goCount = SPOTS.filter(s => {
+    const sv = voteData[s.id] || {};
+    const goCnt = MEMBERS.filter(m => sv[m.key] === 'go').length;
+    return goCnt >= 2;
+  }).length;
+  const summaryBar = `
+    <div class="vote-summary">
+      🗳 ${SPOTS.length}곳 중 <strong>${goCount}곳</strong>이 2명 이상 "가고 싶어요"
+    </div>`;
+
+  /* ── 관광지 카드 목록 ── */
+  const cards = SPOTS.map(spot => {
+    const sv = voteData[spot.id] || {};
+    const myVote = myVoteKey ? (sv[myVoteKey] || null) : null;
+    const btnDisabled = myVoteKey ? '' : 'disabled title="먼저 이름을 선택해 주세요"';
+
+    /* 가족 반응 줄 */
+    const reactions = MEMBERS.map(m => {
+      const v = sv[m.key];
+      const icon = v === 'go' ? '✈️' : v === 'pass' ? '👌' : '—';
+      return `<span class="vote-react-item">${m.emoji}${icon}</span>`;
+    }).join('');
+
+    /* go 득표수 */
+    const goVotes = MEMBERS.filter(m => sv[m.key] === 'go').length;
+    const goBar = goVotes > 0
+      ? `<div class="vote-bar"><div class="vote-bar-fill" style="width:${goVotes/MEMBERS.length*100}%"></div></div>`
+      : '';
+
+    return `
+      <div class="vote-card">
+        <div class="vote-card-header">
+          <span class="vote-card-emoji">${spot.emoji}</span>
+          <div class="vote-card-title-wrap">
+            <span class="vote-card-name">${spot.name}</span>
+            <span class="vote-cat-chip">${spot.cat}</span>
+          </div>
+          <div class="vote-go-badge${goVotes > 0 ? ' has-votes' : ''}">${goVotes}/4 ✈️</div>
+        </div>
+        <p class="vote-card-desc">${spot.desc}</p>
+        <p class="vote-card-tip">${spot.tip}</p>
+        ${goBar}
+        <div class="vote-btn-row">
+          <button class="vote-btn go${myVote === 'go' ? ' active' : ''}"
+                  onclick="castVote('${spot.id}','go')" ${btnDisabled}>
+            ✈️ 가고 싶어요
+          </button>
+          <button class="vote-btn pass${myVote === 'pass' ? ' active' : ''}"
+                  onclick="castVote('${spot.id}','pass')" ${btnDisabled}>
+            👌 괜찮아요
+          </button>
+        </div>
+        <div class="vote-result-row">${reactions}</div>
+      </div>`;
+  }).join('');
+
+  el.innerHTML = whoBar + summaryBar + cards;
+}
+
+function selectVoter(memberKey) {
+  myVoteKey = (myVoteKey === memberKey) ? '' : memberKey;
+  localStorage.setItem('ftVoteAs', myVoteKey);
+  renderVote();
+}
+
+async function castVote(spotId, voteType) {
+  if (!myVoteKey) return;
+  if (!voteData[spotId]) voteData[spotId] = {};
+  const prev = voteData[spotId][myVoteKey];
+  voteData[spotId][myVoteKey] = (prev === voteType) ? null : voteType;
+  renderVote();
+  if (fbReady) {
+    await db.collection('trips').doc(TRIP_ID).set(
+      { votes: { [spotId]: voteData[spotId] } },
+      { merge: true }
+    );
+  } else {
+    localStorage.setItem('ftVotes', JSON.stringify(voteData));
+  }
+}
+
 /* ── 관리자 ──────────────────────────────────── */
 document.getElementById('adminBtn').addEventListener('click', () => {
   if (isAdmin) {
@@ -3486,6 +4081,11 @@ function enterAdmin() {
   document.getElementById('inAdminPw').value = '';
   document.getElementById('adminLoginErr').style.display = 'none';
   closeModal('modalAdminLogin');
+  if (INTRO_VOTE_ONLY) {
+    document.getElementById('sectionNav').style.display = '';
+    switchSection('schedule');
+    window.dispatchEvent(new Event('resize'));
+  }
   openTripSettings();
   renderDayContent(curDay);
 }
@@ -3642,6 +4242,11 @@ function enterApp() {
 initFb();
 loadTrip();
 listenLetters();
+
+if (INTRO_VOTE_ONLY && !isAdmin) {
+  document.getElementById('sectionNav').style.display = 'none';
+  switchSection('vote');
+}
 
 // ?preview=dad → 아빠 열람 화면 미리보기 (샘플 편지 포함)
 if (new URLSearchParams(location.search).get('clearLetters') === '1') {

@@ -6,7 +6,7 @@
 
 ## 프로젝트 개요
 
-2026년 9월 11일~14일 다낭 가족여행을 위한 단일 HTML 웹앱.
+2026년 9월 11일~15일 다낭 가족여행을 위한 단일 HTML 웹앱.
 Firebase Firestore 실시간 동기화 기반, 별도 빌드 없이 `index.html` 하나로 구성.
 
 ---
@@ -48,7 +48,7 @@ const TRIP_ID = 'danang-2026-0911';
 const SCHEDULE_LOCKED = true;          // 일정 잠금 오버레이
 const CC_RATE = 17;                    // KRW→VND 기준환율
 
-const LETTER_OPEN_DATE = new Date('2026-09-14T08:05:00+09:00');
+const LETTER_OPEN_DATE = new Date('2026-09-15T09:25:00+09:00');
 
 const LETTER_PASSWORDS = {
   '👩🏻 엄마': '0505',
