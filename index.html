@@ -3215,6 +3215,9 @@ function initFb() {
   try {
     firebase.initializeApp(FIREBASE_CONFIG);
     db = firebase.firestore();
+    db.enablePersistence({ synchronizeTabs: true }).catch(err => {
+      console.warn('오프라인 캐시 비활성화:', err.code);
+    });
     fbReady = true;
     return true;
   } catch(e) { console.error('Firebase 초기화 오류:', e); return false; }
@@ -4351,6 +4354,12 @@ function enterApp() {
 initFb();
 loadTrip();
 listenLetters();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(err => console.warn('SW 등록 실패:', err));
+  });
+}
 
 if (INTRO_VOTE_ONLY && !isAdmin) {
   document.getElementById('sectionNav').style.display = 'none';
