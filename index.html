@@ -2153,6 +2153,7 @@
       height: 100%;
       border-radius: 50%;
       position: relative;
+      overflow: hidden;
       box-shadow: 0 6px 24px rgba(0,0,0,0.2);
       border: 5px solid var(--card);
       outline: 1.5px solid var(--border);
@@ -2168,14 +2169,14 @@
     }
     .rl-seg-label {
       position: absolute;
-      left: 60%;
-      top: -8px;
-      font-size: 0.6875rem;
+      left: 36%;
+      top: -7px;
+      font-size: 0.625rem;
       font-weight: 700;
       color: #fff;
       text-shadow: 0 1px 2px rgba(0,0,0,0.45);
       white-space: nowrap;
-      max-width: 74px;
+      max-width: 52px;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -4291,7 +4292,7 @@ const ROULETTE_PRESETS = {
   role: ['사진작가', '짐꾼', '길찾기 담당', '메뉴 결정권자'],
   penalty: MEMBERS.map(m => `${m.emoji} ${m.name}`),
 };
-const RL_COLORS = ['#0a7e9a','#d4714a','#0ea09c','#e8a33d','#3d8f7a','#c65b7c'];
+const RL_COLORS = ['#0a7e9a','#d4714a'];
 
 function loadRoulettePreset(key, btn) {
   document.querySelectorAll('.rl-preset-bar .cl-filter-chip').forEach(b => b.classList.remove('active'));
