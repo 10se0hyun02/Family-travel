@@ -2111,6 +2111,110 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── 룰렛 ─────────────────────────────── */
+    .rl-preset-bar {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 2px 14px;
+    }
+    .rl-preset-bar::-webkit-scrollbar { display: none; }
+    .rl-options-input {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: var(--rsm);
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      background: var(--card);
+      color: var(--text);
+      resize: vertical;
+      margin-bottom: 22px;
+    }
+    .rl-options-input:focus { outline: none; border-color: var(--primary); }
+    .rl-wheel-wrap {
+      position: relative;
+      width: min(280px, 78vw);
+      aspect-ratio: 1;
+      margin: 0 auto 24px;
+    }
+    .rl-pointer {
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.875rem;
+      z-index: 2;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+    }
+    .rl-wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+      border: 5px solid var(--card);
+      outline: 1.5px solid var(--border);
+      transition: transform 4s cubic-bezier(0.17,0.67,0.12,0.99);
+    }
+    .rl-seg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 0;
+      transform-origin: 0 0;
+    }
+    .rl-seg-label {
+      position: absolute;
+      left: 60%;
+      top: -8px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.45);
+      white-space: nowrap;
+      max-width: 74px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .rl-empty {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 24px;
+      color: var(--muted); font-size: 0.8125rem;
+    }
+    .rl-spin-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 13px 36px;
+      border-radius: 24px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .rl-spin-btn:active { transform: scale(0.96); }
+    .rl-spin-btn:disabled { opacity: 0.5; cursor: default; }
+    .rl-result {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--primary);
+      animation: rlPop 0.4s ease;
+    }
+    @keyframes rlPop {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
   </style>
 </head>
 <body>
@@ -2186,6 +2290,7 @@
       <button class="sec-tab"        id="secTab-checklist" onclick="switchSection('checklist')">☑️ 준비물</button>
       <button class="sec-tab"        id="secTab-letter"    onclick="switchSection('letter')"   style="display:none">💌 편지</button>
       <button class="sec-tab"        id="secTab-vote"      onclick="switchSection('vote')"     >🗳 투표</button>
+      <button class="sec-tab"        id="secTab-roulette"  onclick="switchSection('roulette')" >🎡 룰렛</button>
     </nav>
     <div class="day-nav-wrap" id="dayNavWrap">
       <nav class="day-nav" id="dayNav"></nav>
@@ -2842,6 +2947,29 @@
 
   <div id="viewVote" style="display:none">
     <main class="main-content" id="voteContent"></main>
+  </div>
+
+  <!-- ── 룰렛 View ── -->
+  <div id="viewRoulette" style="display:none">
+    <main class="main-content">
+      <div class="rl-preset-bar">
+        <button class="cl-filter-chip active" onclick="loadRoulettePreset('food', this)">🍽 저녁 메뉴</button>
+        <button class="cl-filter-chip" onclick="loadRoulettePreset('role', this)">🎭 오늘의 역할</button>
+        <button class="cl-filter-chip" onclick="loadRoulettePreset('penalty', this)">💸 밥값 벌칙</button>
+        <button class="cl-filter-chip" onclick="loadRoulettePreset('custom', this)">✏️ 직접입력</button>
+      </div>
+
+      <textarea id="rlOptions" class="rl-options-input" rows="2" placeholder="쉼표(,)로 구분해서 항목 입력" oninput="buildWheel()">씨푸드, 미꽝, 반미, 분짜, 로컬맛집 아무데나, 스파게티</textarea>
+
+      <div class="rl-wheel-wrap">
+        <div class="rl-pointer">▼</div>
+        <div class="rl-wheel" id="rlWheel"></div>
+      </div>
+
+      <button class="rl-spin-btn" id="rlSpinBtn" onclick="spinRoulette()">🎡 스핀!</button>
+
+      <div class="rl-result" id="rlResult" style="display:none"></div>
+    </main>
   </div>
 
 </div>
@@ -3899,7 +4027,7 @@ function listenLetters() {
 }
 
 /* ── 섹션 전환 ─────────────────────────────── */
-const SECTIONS = ['schedule','info','hotel','flight','bus','checklist','letter','vote'];
+const SECTIONS = ['schedule','info','hotel','flight','bus','checklist','letter','vote','roulette'];
 
 // ✏️ 일정 공개 시 아래 값을 false 로 변경
 const SCHEDULE_LOCKED = false;
@@ -3933,6 +4061,7 @@ function switchSection(name) {
   if (name === 'checklist') renderChecklist();
   if (name === 'letter') renderLetter();
   if (name === 'vote')   renderVote();
+  if (name === 'roulette') buildWheel();
   if (SCHEDULE_LOCKED) {
     const ov = document.getElementById('scheduleLockOverlay');
     if (ov) ov.style.display = name === 'schedule' ? 'flex' : 'none';
@@ -4153,6 +4282,73 @@ async function castVote(spotId, voteType) {
   } else {
     localStorage.setItem('ftVotes', JSON.stringify(voteData));
   }
+}
+
+/* ── 룰렛 ────────────────────────────────────── */
+let rlRotation = 0;
+const ROULETTE_PRESETS = {
+  food: ['씨푸드', '미꽝', '반미', '분짜', '로컬맛집 아무데나', '스파게티'],
+  role: ['사진작가', '짐꾼', '길찾기 담당', '메뉴 결정권자'],
+  penalty: MEMBERS.map(m => `${m.emoji} ${m.name}`),
+};
+const RL_COLORS = ['#0a7e9a','#d4714a','#0ea09c','#f4b400','#7a5cff','#e0578a','#3a9d5c','#c0392b'];
+
+function loadRoulettePreset(key, btn) {
+  document.querySelectorAll('.rl-preset-bar .cl-filter-chip').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const ta = document.getElementById('rlOptions');
+  if (key === 'custom') { ta.value = ''; ta.focus(); }
+  else ta.value = ROULETTE_PRESETS[key].join(', ');
+  buildWheel();
+}
+
+function getRlOptions() {
+  return document.getElementById('rlOptions').value
+    .split(',').map(s => s.trim()).filter(Boolean);
+}
+
+function buildWheel() {
+  const opts = getRlOptions();
+  const wheel = document.getElementById('rlWheel');
+  document.getElementById('rlResult').style.display = 'none';
+
+  if (opts.length < 2) {
+    wheel.style.background = 'var(--border)';
+    wheel.innerHTML = '<div class="rl-empty">항목을 2개 이상 입력하세요</div>';
+    return;
+  }
+
+  const seg = 360 / opts.length;
+  const stops = opts.map((_, i) => `${RL_COLORS[i % RL_COLORS.length]} ${i*seg}deg ${(i+1)*seg}deg`).join(', ');
+  wheel.style.background = `conic-gradient(${stops})`;
+  wheel.innerHTML = opts.map((label, i) => {
+    const angle = -90 + seg * i + seg / 2;
+    return `<div class="rl-seg" style="transform:rotate(${angle}deg)"><span class="rl-seg-label">${esc(label)}</span></div>`;
+  }).join('');
+}
+
+function spinRoulette() {
+  const opts = getRlOptions();
+  if (opts.length < 2) { alert('항목을 2개 이상 입력해주세요!'); return; }
+
+  const seg = 360 / opts.length;
+  const btn = document.getElementById('rlSpinBtn');
+  const wheel = document.getElementById('rlWheel');
+  const resultEl = document.getElementById('rlResult');
+  btn.disabled = true;
+  resultEl.style.display = 'none';
+
+  rlRotation += (5 + Math.random() * 3) * 360 + Math.random() * 360;
+  wheel.style.transform = `rotate(${rlRotation}deg)`;
+
+  wheel.addEventListener('transitionend', function onDone() {
+    wheel.removeEventListener('transitionend', onDone);
+    const effective = ((rlRotation % 360) + 360) % 360;
+    const idx = Math.floor(((360 - effective) % 360) / seg);
+    resultEl.textContent = `🎉 ${opts[idx]}`;
+    resultEl.style.display = 'block';
+    btn.disabled = false;
+  }, { once: true });
 }
 
 /* ── 관리자 ──────────────────────────────────── */
