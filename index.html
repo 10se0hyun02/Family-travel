@@ -3161,12 +3161,6 @@ const CAT_ICONS = {
   flight:'✈️', hotel:'🏨', food:'🍽️', sight:'🎡',
   transport:'🚗', shopping:'🛍️', activity:'🎯', rest:'☕'
 };
-const BOOKING = {
-  confirmed: { text:'예약완료', cls:'bk-confirmed' },
-  pending:   { text:'예약중',   cls:'bk-pending'   },
-  planned:   { text:'미정',     cls:'bk-planned'   }
-};
-
 /* ── 샘플 데이터 ──────────────────────────────── */
 const SAMPLE_INFO = {
   title: '2026 베트남 다낭 가족 여행',
@@ -3508,7 +3502,6 @@ function renderDayContent(di) {
 
 function cardHtml(a, idx = 0) {
   const icon    = a.icon || CAT_ICONS[a.category] || '📌';
-  const bk      = BOOKING[a.bookingStatus] || BOOKING.planned;
   return `
     <div class="activity-card cat-${a.category||'other'}" id="card-${a.id}" style="animation-delay:${idx * 0.06}s">
       <div class="act-header">
@@ -3517,7 +3510,6 @@ function cardHtml(a, idx = 0) {
         <div class="act-info">
           <div class="act-title-row">
             <span class="act-title">${esc(a.title)}</span>
-            <span class="bk-badge ${bk.cls}">${bk.text}</span>
           </div>
           <div class="act-meta">
             ${a.location ? `<span>📍 ${esc(a.location)}</span>` : ''}
