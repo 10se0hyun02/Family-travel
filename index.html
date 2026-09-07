@@ -2180,8 +2180,8 @@
     <nav class="section-nav" id="sectionNav">
       <button class="sec-tab active" id="secTab-schedule"  onclick="switchSection('schedule')" >🗓 일정</button>
       <button class="sec-tab"        id="secTab-info"      onclick="switchSection('info')"     >📋 여행정보</button>
-      <button class="sec-tab"        id="secTab-flight"    onclick="switchSection('flight')"   >✈️ 항공정보</button>
       <button class="sec-tab"        id="secTab-hotel"     onclick="switchSection('hotel')"    >🏨 숙소정보</button>
+      <button class="sec-tab"        id="secTab-flight"    onclick="switchSection('flight')"   >✈️ 항공정보</button>
       <button class="sec-tab"        id="secTab-bus"       onclick="switchSection('bus')"      >🚌 리무진정보</button>
       <button class="sec-tab"        id="secTab-checklist" onclick="switchSection('checklist')">☑️ 준비물</button>
       <button class="sec-tab"        id="secTab-letter"    onclick="switchSection('letter')"   style="display:none">💌 편지</button>
@@ -3899,7 +3899,7 @@ function listenLetters() {
 }
 
 /* ── 섹션 전환 ─────────────────────────────── */
-const SECTIONS = ['schedule','info','flight','hotel','bus','checklist','letter','vote'];
+const SECTIONS = ['schedule','info','hotel','flight','bus','checklist','letter','vote'];
 
 // ✏️ 일정 공개 시 아래 값을 false 로 변경
 const SCHEDULE_LOCKED = false;
