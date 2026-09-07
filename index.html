@@ -2350,6 +2350,13 @@
   <div id="viewHotel" style="display:none">
     <main class="main-content">
 
+      <div class="cl-filter-bar">
+        <button class="cl-filter-chip active" id="hotelTabBtn1" onclick="switchHotelTab(1)">🏨 숙소1 · 9/11~9/13</button>
+        <button class="cl-filter-chip" id="hotelTabBtn2" onclick="switchHotelTab(2)">🏨 숙소2 · 9/13~9/14</button>
+      </div>
+
+      <div id="hotelBlock1">
+
       <div class="flight-leg-title">
         9/11(금) ~ 9/13(일)
         <span class="direction-chip">숙소 1</span>
@@ -2411,6 +2418,10 @@
           <div class="info-row"><span class="info-row-label">이용시간</span><span class="info-row-val">07:00 ~ 19:00</span></div>
         </div>
       </div>
+
+      </div>
+
+      <div id="hotelBlock2" style="display:none">
 
       <div class="flight-leg-title">
         9/13(일) ~ 9/14(월)
@@ -2495,6 +2506,8 @@
           <div class="info-row"><span class="info-row-label">종류</span><span class="info-row-val">야외 수영장 4개 (키즈풀 포함)</span></div>
           <div class="info-row"><span class="info-row-label">부대시설</span><span class="info-row-val">선베드·파라솔 완비</span></div>
         </div>
+      </div>
+
       </div>
 
     </main>
@@ -3902,6 +3915,13 @@ const INTRO_VOTE_ONLY = false;
 
 function viewId(s) {
   return 'view' + s[0].toUpperCase() + s.slice(1);
+}
+
+function switchHotelTab(n) {
+  document.getElementById('hotelTabBtn1').classList.toggle('active', n === 1);
+  document.getElementById('hotelTabBtn2').classList.toggle('active', n === 2);
+  document.getElementById('hotelBlock1').style.display = (n === 1) ? '' : 'none';
+  document.getElementById('hotelBlock2').style.display = (n === 2) ? '' : 'none';
 }
 
 function switchSection(name) {
