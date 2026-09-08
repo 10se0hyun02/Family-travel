@@ -3200,7 +3200,15 @@ const SAMPLE_ACTS = [
   { id:'s4',  day:0, time:'24:00', category:'hotel',     title:'숙소 체크인',                  description:'늦은 도착 후 취침',                     location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'',          bookingStatus:'confirmed', order:3 },
 
   // ── Day 2: 9/12(토) 리조트 풀 데이 🏊 ──
-  { id:'s5',  day:1, time:'09:00', category:'food',      title:'조식',                         description:'조식 이용시간 06:30 - 10:30',                                    location:'TABLE 88',           cost:'조식 포함', bookingStatus:'confirmed', order:1788486131068 },
+  { id:'s5',  day:1, time:'09:00', category:'food',      title:'조식',                         description:'조식 이용시간 06:30 - 10:30',                                    location:'TABLE 88',           cost:'조식 포함', bookingStatus:'confirmed', order:1788486131068,
+    detail: `
+      <ol class="act-detail-steps">
+        <li><strong>즉석 반미·쌀국수 코너 필수</strong> — 국물이 진하고 깔끔해서 전날 여독 풀기 좋음</li>
+        <li><strong>한식도 잘 갖춰짐</strong> — 김치·미역국·흰밥 있어서 아이들·부모님도 걱정 없음</li>
+        <li><strong>커피는 자리에서 주문</strong> — 앉으면 직원이 받으러 옴, 베트남식 '쓰어다(연유커피)' 꼭 시켜보기</li>
+        <li><strong>07:30쯤 가면 창가 자리</strong> 여유있게 앉을 수 있음 (08:30~09:00이 가장 붐비는 시간대)</li>
+      </ol>
+    ` },
   { id:'ogAy4ZHzLFC8fwl2mzcD', day:1, time:'16:30', category:'sight', title:'한시장 쇼핑',      description:'첫 날 옷 쇼핑해서 입고다니기 👕 옷 많이챙겨오지 마~',            location:'한시장',              cost:'-',         bookingStatus:'confirmed', order:1788486605389 },
   { id:'s6',  day:1, time:'10:30', category:'activity',  title:'인피니티풀 수영',              description:'프라이빗 풀에서 자유롭게 수영 🏊 DAY2 일정의 메인 😊 \n이용시간 07:00 - 19:00', location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'포함', bookingStatus:'confirmed', order:1788486145117 },
   { id:'s8',  day:1, time:'13:00', category:'food',      title:'선베드 휴식 및 간단 점심',      description:'수영장 옆 BAR에서 간단식사 🍹 메뉴는 피자, 수제버거, 파스타',    location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'-', bookingStatus:'planned', order:1788486303665 },
