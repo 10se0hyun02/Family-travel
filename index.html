@@ -467,6 +467,40 @@
       line-height: 1.6;
     }
 
+    .act-detail-btn {
+      flex-shrink: 0;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: none;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-family: inherit;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .act-detail-btn:hover { opacity: 0.8; }
+
+    .act-detail-steps {
+      padding-left: 20px;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .act-detail-steps li { margin-bottom: 8px; }
+    .act-detail-warn {
+      margin-top: 14px;
+      background: var(--notice-bg);
+      border: 1px solid var(--notice-border);
+      border-radius: var(--rsm);
+      padding: 11px 13px;
+      font-size: 0.8125rem;
+      color: var(--notice-text);
+      line-height: 1.6;
+    }
+
     .act-actions {
       display: none;
       gap: 6px;
@@ -2815,6 +2849,17 @@
 </div>
 
 <!-- ── Admin Login Modal ── -->
+<!-- ── Activity Detail Modal ── -->
+<div class="modal-overlay" id="modalActDetail">
+  <div class="modal">
+    <h2 class="modal-title" id="actDetailTitle">🔍 자세히보기</h2>
+    <div id="actDetailBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" onclick="closeModal('modalActDetail')">닫기</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modalAdminLogin">
   <div class="modal">
     <h2 class="modal-title">🔐 관리자 로그인</h2>
@@ -3141,7 +3186,17 @@ const SAMPLE_ACTS = [
   // ── Day 1: 9/11(금) 출발 ──
   { id:'s1',  day:0, time:'17:00', category:'flight',    icon:'👨‍👩‍👧‍👦', title:'인천공항 집결',                description:'비행기 시간이 늦으니 여유롭게 도착해서, 저녁 공항에서 같이 먹고 출발', location:'인천국제공항 T1',    cost:'',          bookingStatus:'confirmed', order:0 },
   { id:'s2',  day:0, time:'20:55', category:'flight',    title:'인천 → 다낭 탑승',             description:'에어서울 RS0511. 비행 4시간 45분',                                 location:'인천국제공항 T1',    cost:'왕복 포함', bookingStatus:'confirmed', order:1 },
-  { id:'s3',  day:0, time:'23:40', category:'transport', title:'다낭 공항 도착 · 리조트 이동', description:'쉐라톤 그랜드 다낭까지 약 14km · 차로 25분. 심야라 Grab 배차 지연될 수 있음 — 안 잡히면 공항 택시 이용', location:'다낭 국제공항 T2',   cost:'Grab 약 15~20만동', bookingStatus:'confirmed', order:2 },
+  { id:'s3',  day:0, time:'23:40', category:'transport', title:'다낭 공항 도착 · 리조트 이동', description:'쉐라톤 그랜드 다낭까지 약 14km · 차로 25분. 심야라 Grab 배차 지연될 수 있음 — 안 잡히면 공항 택시 이용', location:'다낭 국제공항 T2',   cost:'Grab 약 15~20만동', bookingStatus:'confirmed', order:2,
+    detail: `
+      <ol class="act-detail-steps">
+        <li>수하물 찾고 <strong>국제선 입국장</strong> 밖으로 나가기</li>
+        <li>2·3번 기둥 사이 횡단보도 → 도로 사이 횡단보도 한 번 더 건너기</li>
+        <li>왼쪽에 보이는 건물이 Grab 픽업 장소 — 건물 앞 <strong>그늘막</strong>에서 기사와 만남</li>
+        <li>Grab 앱에서 차량 호출 → <strong>"공항" 픽업 옵션</strong> 선택, 차종·예상요금 확인 후 호출</li>
+        <li>화면에 뜬 <strong>차량 번호판</strong>이 실제 차량과 일치하는지 반드시 확인 후 탑승</li>
+      </ol>
+      <div class="act-detail-warn">⚠️ 픽업존 근처에서 "그랩?"이라며 먼저 다가오는 사람은 비공식 기사일 수 있어요. 반드시 앱에 뜬 차량번호를 다시 확인하세요.</div>
+    ` },
   { id:'s4',  day:0, time:'24:00', category:'hotel',     title:'숙소 체크인',                  description:'늦은 도착 후 취침',                     location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'',          bookingStatus:'confirmed', order:3 },
 
   // ── Day 2: 9/12(토) 리조트 풀 데이 🏊 ──
@@ -3376,6 +3431,7 @@ function cardHtml(a, idx = 0) {
         <div class="act-info">
           <div class="act-title-row">
             <span class="act-title">${esc(a.title)}</span>
+            ${a.detail ? `<button class="act-detail-btn" onclick="showActDetail('${a.id}')">🔍 자세히보기</button>` : ''}
           </div>
           <div class="act-meta">
             ${a.location ? `<span>📍 ${esc(a.location)}</span>` : ''}
@@ -3402,6 +3458,14 @@ function switchDay(i) {
 
 function openModal(id)  { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function showActDetail(actId) {
+  const act = Object.values(activities).flat().find(a => a.id === actId);
+  if (!act || !act.detail) return;
+  document.getElementById('actDetailTitle').textContent = `🔍 ${act.title}`;
+  document.getElementById('actDetailBody').innerHTML = act.detail;
+  openModal('modalActDetail');
+}
 
 /* ── 편지 비밀번호 설정 ──────────────────────────
    ✏️ 아래 각 참여자의 비밀번호를 입력하세요.
