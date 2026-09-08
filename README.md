@@ -34,7 +34,6 @@ Firebase Firestore 실시간 동기화 기반, 별도 빌드 없이 `index.html`
 ### 기타 기능
 - **입장 페이지(Splash)**: 링크 첫 접속 시만 표시, 새로고침 시 스킵
 - **D-Day 카운트다운**: 시/분/초 실시간 업데이트
-- **댓글**: 각 일정 카드에 가족 댓글 (Firestore 실시간)
 - **환율 계산기**: KRW → VND 자동 변환 (기준율 CC_RATE = 17)
 - **카카오톡 배너**: 안드로이드 카카오 브라우저에서만 "외부브라우저로 열기" 안내
 - **라이트모드**: 네이비 계열 (#1e3a6e, #3561a8)
@@ -67,7 +66,6 @@ const LETTER_PARTICIPANTS = ['👩🏻 엄마', '👨🏻 아빠', '👧🏻 서
 - **프로젝트**: `family-trip-2026-0911`
 - **Hosting URL**: https://family-trip-2026-0911.web.app
 - **Firestore 경로**:
-  - 댓글: `trips/danang-2026-0911/activities/{id}/comments`
   - 체크리스트: `trips/danang-2026-0911/checklist`
   - 편지: `trips/danang-2026-0911/letters/{docId}` (from, to, title, content, createdAt, updatedAt)
 

@@ -329,16 +329,6 @@
     .day-tab .ddate  { font-size: 0.6875rem; margin-top: 1px; }
     .day-tab.active  { color: var(--primary); border-bottom-color: var(--primary); }
 
-    .day-dot {
-      position: absolute;
-      top: 7px;
-      right: 6px;
-      width: 6px;
-      height: 6px;
-      background: #FFD166;
-      border-radius: 50%;
-    }
-
     /* ── Main Content ────────────────────────── */
     .main-content {
       max-width: 720px;
@@ -497,154 +487,6 @@
     .icon-btn:hover { opacity: 0.8; }
     .btn-edit   { background: var(--btn-edit-bg); color: var(--btn-edit-text); }
     .btn-delete { background: var(--btn-del-bg);  color: var(--btn-del-text);  }
-
-    /* ── Comments ────────────────────────────── */
-    .comments-section { border-top: 1px solid var(--border); }
-
-    .cmts-toggle {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 16px;
-      width: 100%;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: 0.8125rem;
-      color: var(--muted);
-      cursor: pointer;
-      text-align: left;
-      transition: background 0.15s;
-    }
-    .cmts-toggle:hover { background: var(--bg); }
-
-    .cmt-count {
-      background: var(--accent);
-      color: #fff;
-      border-radius: 10px;
-      padding: 1px 7px;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      min-width: 20px;
-      text-align: center;
-    }
-
-    .toggle-arrow { margin-left: auto; transition: transform 0.2s; font-size: 0.75rem; }
-    .cmts-toggle.open .toggle-arrow { transform: rotate(180deg); }
-
-    .cmts-body { padding: 0 16px 14px; display: none; }
-    .cmts-body.visible { display: block; }
-
-    .cmt-item {
-      display: flex;
-      gap: 9px;
-      margin-bottom: 10px;
-    }
-
-    .cmt-avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--bg);
-      color: #fff;
-      font-size: 1.25rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .cmt-bubble {
-      flex: 1;
-      background: var(--bg);
-      border-radius: 0 var(--rsm) var(--rsm) var(--rsm);
-      padding: 7px 11px;
-    }
-
-    .cmt-meta-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 2px;
-    }
-    .cmt-name { font-size: 0.75rem; font-weight: 700; color: var(--primary); }
-    .cmt-time { font-size: 0.6875rem; color: var(--muted); }
-    .cmt-text { font-size: 0.8125rem; line-height: 1.5; word-break: break-word; }
-
-    .cmt-empty { font-size: 0.8125rem; color: var(--muted); padding: 4px 0 8px; }
-
-    .cmt-input-row {
-      display: flex;
-      gap: 6px;
-      margin-top: 8px;
-      align-items: flex-start;
-    }
-
-    .cmt-name-sel {
-      width: 90px;
-      flex-shrink: 0;
-      padding: 8px 6px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--rsm);
-      font-family: inherit;
-      font-size: 0.8125rem;
-      background: var(--card);
-      color: var(--text);
-      cursor: pointer;
-      transition: border-color 0.2s;
-      height: 38px;
-    }
-
-    .cmt-text-in {
-      flex: 1;
-      padding: 8px 9px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--rsm);
-      font-family: inherit;
-      font-size: 0.8125rem;
-      background: var(--card);
-      resize: none;
-      transition: border-color 0.2s;
-      height: 38px;
-    }
-
-    .cmt-name-sel:focus,
-    .cmt-text-in:focus { outline: none; border-color: var(--secondary); }
-
-    .cmt-submit {
-      padding: 8px 13px;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: var(--rsm);
-      font-family: inherit;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-      white-space: nowrap;
-      height: 38px;
-    }
-    .cmt-submit:hover { background: #07687e; }
-
-    .cmt-meta-right {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .cmt-del-btn {
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 0.9375rem;
-      cursor: pointer;
-      padding: 0 2px;
-      line-height: 1;
-      opacity: 0.5;
-      transition: opacity 0.15s, color 0.15s;
-    }
-    .cmt-del-btn:hover { opacity: 1; color: #e06c75; }
 
     /* ── Modals ──────────────────────────────── */
     .modal-overlay {
@@ -1421,10 +1263,7 @@
       .trip-title     { font-size: 1.3125rem; }
       .main-content   { padding: 16px 12px 90px; }
       .act-header     { padding: 13px 13px 10px; }
-      .cmts-body      { padding: 0 13px 13px; }
       .f-row          { grid-template-columns: 1fr; }
-      .cmt-input-row  { flex-wrap: wrap; }
-      .cmt-name-sel   { width: 100%; }
       .modal-overlay  { align-items: flex-end; padding: 0; }
       .modal          { border-radius: var(--radius) var(--radius) 0 0; max-height: 88vh; }
 
@@ -3185,8 +3024,6 @@ let isAdmin = false;
 let curDay = 0;
 let tripData = null;
 let activities = {};        // { dayIndex: [activity, ...] }
-let comments = {};          // { activityId: [comment, ...] }
-let cmtListeners = {};      // 댓글 실시간 리스너 해제 함수
 let unsubActs = null;
 let checklistData = {};     // { itemId: bool }
 let assignData    = {};     // { itemId: string[] }  e.g. { cl01: ['mom','seo'] }
@@ -3309,11 +3146,11 @@ const SAMPLE_ACTS = [
 
   // ── Day 2: 9/12(토) 리조트 풀 데이 🏊 ──
   { id:'s5',  day:1, time:'09:00', category:'food',      title:'조식',                         description:'조식 이용시간 06:30 - 10:30',                                    location:'TABLE 88',           cost:'조식 포함', bookingStatus:'confirmed', order:1788486131068 },
-  { id:'ogAy4ZHzLFC8fwl2mzcD', day:1, time:'09:00', category:'sight', title:'한시장 쇼핑',      description:'첫 날 옷 쇼핑해서 입고다니기 👕 옷 많이챙겨오지 마~',            location:'한시장',              cost:'-',         bookingStatus:'confirmed', order:1788486605389 },
+  { id:'ogAy4ZHzLFC8fwl2mzcD', day:1, time:'16:30', category:'sight', title:'한시장 쇼핑',      description:'첫 날 옷 쇼핑해서 입고다니기 👕 옷 많이챙겨오지 마~',            location:'한시장',              cost:'-',         bookingStatus:'confirmed', order:1788486605389 },
   { id:'s6',  day:1, time:'10:30', category:'activity',  title:'인피니티풀 수영',              description:'프라이빗 풀에서 자유롭게 수영 🏊 DAY2 일정의 메인 😊 \n이용시간 07:00 - 19:00', location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'포함', bookingStatus:'confirmed', order:1788486145117 },
   { id:'s8',  day:1, time:'13:00', category:'food',      title:'선베드 휴식 및 간단 점심',      description:'수영장 옆 BAR에서 간단식사 🍹 메뉴는 피자, 수제버거, 파스타',    location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'-', bookingStatus:'planned', order:1788486303665 },
   { id:'s9',  day:1, time:'16:00', category:'transport', title:'시내 이동',                    description:'Grab으로 시내까지 약 15~20분',                                   location:'리조트 → 시내',      cost:'Grab',      bookingStatus:'planned',   order:1788486322048 },
-  { id:'s10', day:1, time:'19:00', category:'food',      title:'저녁 – 씨푸드',                description:'신선한 랍스터·새우·조개 코스. 1인 4~6만원대',                    location:'씨푸드 레스토랑',    cost:'~6만원/인', bookingStatus:'planned',   order:5 },
+  { id:'s10', day:1, time:'19:00', category:'food',      title:'저녁 – 씨푸드',                description:'신선한 랍스터·새우·조개 코스. 1인 4~6만원대. 영업시간 10:30~21:30',   location:'안토이 (An Thoi) - 114 Bạch Đằng, Hải Châu',    cost:'~6만원/인', bookingStatus:'planned',   order:5 },
   { id:'s11', day:1, time:'21:00', category:'sight',     title:'용다리 불·물 쇼 🔥',           description:'토요일 밤 9시에만! 불꽃·물 뿜는 쇼.',                            location:'한강 용다리',        cost:'무료',      bookingStatus:'planned',   order:1788486350900 },
   { id:'s12', day:1, time:'22:30', category:'transport', title:'리조트 복귀',                  description:'Grab으로 복귀',                                                  location:'시내 → 리조트',      cost:'Grab',      bookingStatus:'planned',   order:1788486362952 },
 
@@ -3395,7 +3232,6 @@ function loadFromSample() {
     if (!activities[a.day]) activities[a.day] = [];
     activities[a.day].push({...a});
   });
-  comments = JSON.parse(localStorage.getItem('ftComments') || '{}');
   checklistData = JSON.parse(localStorage.getItem('ftChecklist') || '{}');
   assignData    = JSON.parse(localStorage.getItem('ftAssign')    || '{}');
   voteData      = JSON.parse(localStorage.getItem('ftVotes')     || '{}');
@@ -3464,90 +3300,6 @@ async function resetSampleActs() {
   alert('일정이 초기화됐습니다!');
 }
 
-/* ── 댓글 ────────────────────────────────────── */
-function loadCmts(actId) {
-  if (!fbReady) return;
-  if (cmtListeners[actId]) return;
-  cmtListeners[actId] = db.collection('trips').doc(TRIP_ID)
-    .collection('activities').doc(actId)
-    .collection('comments').orderBy('timestamp')
-    .onSnapshot(snap => {
-      comments[actId] = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      updateCmtUI(actId);
-    });
-}
-
-function updateCmtUI(actId) {
-  const listEl  = document.getElementById(`clist-${actId}`);
-  const countEl = document.getElementById(`ccount-${actId}`);
-  if (!listEl) return;
-  const list = comments[actId] || [];
-  if (countEl) countEl.textContent = list.length;
-  if (list.length === 0) {
-    listEl.innerHTML = '<p class="cmt-empty">첫 댓글을 남겨보세요 💬</p>';
-    return;
-  }
-  listEl.innerHTML = list.map(c => {
-    const init = (c.name || '?').split(' ')[0] || '?';
-    const ts = c.timestamp?.toDate
-      ? c.timestamp.toDate().toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})
-      : (c.timestamp ? new Date(c.timestamp).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}) : '');
-    return `
-      <div class="cmt-item">
-        <div class="cmt-avatar">${init}</div>
-        <div class="cmt-bubble">
-          <div class="cmt-meta-row">
-            <span class="cmt-name">${esc(c.name)}</span>
-            <span class="cmt-meta-right">
-              <span class="cmt-time">${ts}</span>
-              <button class="cmt-del-btn" onclick="deleteCmt('${actId}','${c.id}')" title="삭제">×</button>
-            </span>
-          </div>
-          <div class="cmt-text">${esc(c.text)}</div>
-        </div>
-      </div>`;
-  }).join('');
-}
-
-async function submitCmt(actId) {
-  const nameEl = document.getElementById(`cin-name-${actId}`);
-  const textEl = document.getElementById(`cin-text-${actId}`);
-  const name = nameEl.value;
-  const text = textEl.value.trim();
-  if (!text) { alert('댓글을 입력해주세요.'); return; }
-  localStorage.setItem('ftUserName', name);
-  const data = {
-    name, text,
-    timestamp: fbReady
-      ? firebase.firestore.FieldValue.serverTimestamp()
-      : new Date().toISOString()
-  };
-  if (fbReady) {
-    await db.collection('trips').doc(TRIP_ID)
-      .collection('activities').doc(actId)
-      .collection('comments').add(data);
-  } else {
-    if (!comments[actId]) comments[actId] = [];
-    comments[actId].push({ id: String(Date.now()), ...data });
-    localStorage.setItem('ftComments', JSON.stringify(comments));
-    updateCmtUI(actId);
-  }
-  textEl.value = '';
-}
-
-async function deleteCmt(actId, cmtId) {
-  if (!confirm('댓글을 삭제할까요?')) return;
-  if (fbReady) {
-    await db.collection('trips').doc(TRIP_ID)
-      .collection('activities').doc(actId)
-      .collection('comments').doc(cmtId).delete();
-  } else {
-    comments[actId] = (comments[actId] || []).filter(c => c.id !== cmtId);
-    localStorage.setItem('ftComments', JSON.stringify(comments));
-    updateCmtUI(actId);
-  }
-}
-
 /* ── 렌더링 ──────────────────────────────────── */
 function renderApp() {
   renderHeader();
@@ -3579,13 +3331,8 @@ function renderTabs() {
   const start = tripData.startDate || '2025-08-01';
   document.getElementById('dayNav').innerHTML = Array.from({length:n}, (_,i) => {
     const d = dayDate(start, i);
-    const hasCmt = Object.keys(comments).some(k => {
-      const act = (activities[i] || []).find(a => a.id === k);
-      return act && (comments[k] || []).length > 0;
-    });
     return `
       <button class="day-tab ${i===curDay?'active':''}" onclick="switchDay(${i})">
-        ${hasCmt ? '<span class="day-dot"></span>' : ''}
         <span class="dlabel">Day ${i+1}</span>
         <span class="ddate">${d.getMonth()+1}/${d.getDate()} (${['일','월','화','수','목','금','토'][d.getDay()]})</span>
       </button>`;
@@ -3599,7 +3346,7 @@ function renderDayContent(di) {
 
   const notice = !fbReady ? `
     <div class="firebase-notice">
-      <strong>⚠️ 데모 모드</strong> — Firebase가 설정되지 않아 댓글이 이 기기에만 저장됩니다.
+      <strong>⚠️ 데모 모드</strong> — Firebase가 설정되지 않아 변경사항이 이 기기에만 저장됩니다.
       가족과 실시간 공유하려면 <code>index.html</code>의 Firebase 설정을 완료하고
       URL을 공유하세요. (README.md 참고)
     </div>` : '';
@@ -3617,16 +3364,6 @@ function renderDayContent(di) {
       ${acts.length ? acts.map((a, i) => cardHtml(a, i)).join('') : emptyHtml}
       <button class="add-act-btn" onclick="openAddAct()">+ 일정 추가</button>
     </div>`;
-
-  // 댓글 로드
-  acts.forEach(a => {
-    if (fbReady) loadCmts(a.id);
-    else updateCmtUI(a.id);
-  });
-
-  // 이름 자동 채우기
-  const saved = localStorage.getItem('ftUserName') || '';
-  if (saved) document.querySelectorAll('.cin-name').forEach(el => { if (!el.value) el.value = saved; });
 }
 
 function cardHtml(a, idx = 0) {
@@ -3651,24 +3388,6 @@ function cardHtml(a, idx = 0) {
         <button class="icon-btn btn-edit"   onclick="openEditAct('${a.id}')">✏️ 수정</button>
         <button class="icon-btn btn-delete" onclick="deleteAct('${a.id}')">🗑️ 삭제</button>
       </div>
-      <div class="comments-section">
-        <button class="cmts-toggle" id="ctog-${a.id}" onclick="toggleCmts('${a.id}')">
-          💬 댓글
-          <span class="cmt-count" id="ccount-${a.id}">0</span>
-          <span class="toggle-arrow">▾</span>
-        </button>
-        <div class="cmts-body" id="cbody-${a.id}">
-          <div id="clist-${a.id}"><p class="cmt-empty">첫 댓글을 남겨보세요 💬</p></div>
-          <div class="cmt-input-row">
-            <select class="cmt-name-sel cin-name" id="cin-name-${a.id}">
-              ${(tripData?.participants||[]).map(p=>`<option value="${p}">${p}</option>`).join('')}
-            </select>
-            <textarea class="cmt-text-in" id="cin-text-${a.id}"
-              placeholder="댓글 남기기..." rows="1"></textarea>
-            <button class="cmt-submit" onclick="submitCmt('${a.id}')">등록</button>
-          </div>
-        </div>
-      </div>
     </div>`;
 }
 
@@ -3679,21 +3398,6 @@ function switchDay(i) {
   const activeTab = document.querySelector('.day-tab.active');
   if (activeTab) activeTab.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
   renderDayContent(i);
-}
-
-function toggleCmts(actId) {
-  const body = document.getElementById(`cbody-${actId}`);
-  const tog  = document.getElementById(`ctog-${actId}`);
-  const open = body.classList.contains('visible');
-  body.classList.toggle('visible', !open);
-  tog.classList.toggle('open', !open);
-  if (!open) {
-    loadCmts(actId);
-    const saved = localStorage.getItem('ftUserName') || '';
-    const nameEl = document.getElementById(`cin-name-${actId}`);
-    if (nameEl && saved && !nameEl.value) nameEl.value = saved;
-    setTimeout(() => body.scrollIntoView({ behavior:'smooth', block:'nearest' }), 100);
-  }
 }
 
 function openModal(id)  { document.getElementById(id).classList.add('open'); }
