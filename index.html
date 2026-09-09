@@ -132,37 +132,12 @@
 
     /* ── Header ─────────────────────────────── */
     .trip-header {
-      background:
-        radial-gradient(ellipse 55% 50% at 95% 8%,  rgba(0,220,210,0.22) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 35% at 4%  92%, rgba(255,200,80,0.12) 0%, transparent 55%),
-        radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
-        linear-gradient(150deg, var(--header-from) 0%, var(--header-mid) 55%, var(--header-to) 100%);
-      background-size: auto, auto, 22px 22px, 100% 100%;
-      color: var(--header-text, #fff);
-      padding: 30px 20px 54px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      padding: 30px 20px 28px;
       position: relative;
-      overflow: hidden;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .trip-header::before {
-      content: '';
-      position: absolute;
-      top: -70px; right: -70px;
-      width: 260px; height: 260px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      pointer-events: none;
-    }
-
-    .trip-header::after {
-      content: '';
-      position: absolute;
-      bottom: -30px; left: 10%;
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-      pointer-events: none;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
     }
 
     .trip-header-inner {
@@ -196,23 +171,24 @@
       background: none;
       padding: 0 3px;
       font-size: 0.8125rem;
-      opacity: 0.9;
+      color: var(--muted);
     }
 
     .meta-sep {
-      opacity: 0.35;
+      opacity: 0.5;
+      color: var(--muted);
       font-size: 0.8125rem;
       padding: 0 1px;
     }
 
     .dday-chip {
-      background: rgba(255,255,255,0.2);
-      color: var(--header-text);
+      background: var(--bg);
+      color: var(--primary);
       font-weight: 700;
       border-radius: 6px;
       padding: 3px 9px;
       font-size: 0.75rem;
-      border: 1px solid rgba(255,255,255,0.28);
+      border: 1px solid var(--border);
       letter-spacing: 0.4px;
       margin-left: 6px;
     }
@@ -224,18 +200,18 @@
     }
 
     .participant-chip {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.28);
+      background: var(--bg);
+      border: 1px solid var(--border);
       border-radius: 20px;
       padding: 4px 13px;
       font-size: 0.8125rem;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      color: var(--text);
     }
 
     .participant-chip--bday {
-      background: linear-gradient(135deg, rgba(255,215,0,0.28), rgba(255,165,0,0.18));
-      border: 1.5px solid rgba(255,215,0,0.6);
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      font-weight: 700;
       position: relative;
     }
     .participant-chip--bday::after {
@@ -244,18 +220,16 @@
       top: -7px;
       right: -5px;
       font-size: 0.75rem;
-      color: #f5a623;
+      color: var(--accent);
       line-height: 1;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.15);
     }
 
     .bday-banner {
       margin-top: 13px;
       padding-top: 12px;
-      border-top: 1px solid rgba(255,255,255,0.18);
+      border-top: 1px solid var(--border);
       font-size: 0.75rem;
-      color: var(--header-text);
-      opacity: 0.72;
+      color: var(--muted);
       font-style: italic;
       letter-spacing: 0.15px;
     }
@@ -283,8 +257,8 @@
 
     .admin-indicator {
       display: none;
-      background: #fff;
-      color: var(--primary);
+      background: var(--primary);
+      color: #fff;
       border-radius: 20px;
       padding: 2px 10px;
       font-size: 0.6875rem;
@@ -1236,8 +1210,8 @@
     .theme-toggle {
       display: flex;
       align-items: center;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.28);
+      background: var(--bg);
+      border: 1px solid var(--border);
       border-radius: 24px;
       padding: 4px 5px;
       cursor: pointer;
@@ -1245,12 +1219,12 @@
       flex-shrink: 0;
       user-select: none;
     }
-    .theme-toggle:hover { background: rgba(255,255,255,0.26); }
+    .theme-toggle:hover { background: var(--border); }
 
     .t-track {
       width: 38px;
       height: 21px;
-      background: rgba(255,255,255,0.22);
+      background: var(--border);
       border-radius: 11px;
       position: relative;
       flex-shrink: 0;
@@ -1272,8 +1246,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.28);
+      background: var(--bg);
+      border: 1px solid var(--border);
       border-radius: 20px;
       padding: 3px 10px;
       min-width: 40px;
@@ -1281,19 +1255,19 @@
       transition: background 0.2s, border-color 0.2s;
       flex-shrink: 0;
       user-select: none;
-      color: var(--header-text);
+      color: var(--text);
       font-family: inherit;
       font-size: 0.8rem;
       font-weight: 700;
       white-space: nowrap;
       letter-spacing: 0.3px;
     }
-    .font-sz-btn:hover  { background: rgba(255,255,255,0.26); }
-    .font-sz-btn.fsz-on { background: rgba(255,255,255,0.28); border-color: rgba(255,255,255,0.55); }
+    .font-sz-btn:hover  { background: var(--border); }
+    .font-sz-btn.fsz-on { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
 
     /* ── Mobile ──────────────────────────────── */
     @media (max-width: 600px) {
-      .trip-header    { padding: 20px 16px 44px; }
+      .trip-header    { padding: 20px 16px 22px; }
       .trip-title     { font-size: 1.3125rem; }
       .main-content   { padding: 16px 12px 90px; }
       .act-header     { padding: 13px 13px 10px; }
@@ -3287,34 +3261,38 @@ const SAMPLE_ACTS = [
     ` },
   { id:'s13', day:2, time:'10:00', category:'activity',  title:'마지막 수영',                  description:'체크아웃 전 마지막 풀 타임 🏊 12시까지만 가능!',                 location:'풀빌라',             cost:'포함',      bookingStatus:'planned',   order:0 },
   { id:'s14', day:2, time:'12:00', category:'hotel',     title:'체크아웃 · 짐 맡기기',         description:'짐은 프런트에 맡기고 몸만 시내로. 저녁에 다시 찾으면 됨',        location:'리조트 프런트',      cost:'',          bookingStatus:'planned',   order:1 },
-  { id:'s15', day:2, time:'13:00', category:'food',      title:'점심 – 베만',                  description:'다낭 최고 인기 씨푸드, 미쉐린 가이드 등재. 미케비치 바로 맞은편', location:'베만 (Be Man) - Vo Nguyen Giap St, Man Thai Ward, Son Tra', cost:'~1인 4~8만원대', bookingStatus:'planned', order:2,
+  { id:'s27', day:2, time:'12:00', category:'activity',  title:'마사지',                       description:'다한스파 무료 픽업(쉐라톤) 12:00 → 12:30 도착, 마사지 12:30~14:00 (90분)', location:'다한스파 (Dahan Spa)', cost:'',          bookingStatus:'confirmed', order:2 },
+  { id:'s15', day:2, time:'15:30', category:'food',      title:'점심 – 목식당',                description:'한국인들 사이 최고 인기 씨푸드, 미케비치 도보 7~10분',           location:'목식당 (Hải sản Mộc quán) - 26 Tô Hiến Thành, Sơn Trà', cost:'~1인 3~6만원대', bookingStatus:'planned', order:3,
     detail: `
+      <div class="act-detail-subhead">🦐 한국인 추천 메뉴</div>
       <ol class="act-detail-steps">
-        <li>살아있는 해산물 직접 골라서 <strong>조리법 지정</strong>(튀김·볶음·찜) — 게·랍스터부터 지오덕·달팽이까지</li>
-        <li>인기메뉴: <strong>조개·가리비 구이</strong>, 맥주는 저렴한 편</li>
-        <li>영업시간 09:00~24:00 — 유명한 만큼 붐빔, 저렴한 편은 아님</li>
-        <li>⚠️ 외국인/현지인 가격이 다르다는 후기 있음 — 메뉴판 가격 미리 확인</li>
+        <li><strong>크레이피시(닭새우)</strong> — 흔히 '랍스터'로 불리지만 정확히는 크레이피시. 버터구이 또는 스팀 선택, 목식당 대표 메뉴</li>
+        <li><strong>가리비 오일구이</strong> — 마늘·파프레이크 올림, 7만동. 가성비 최고로 꼽힘</li>
+        <li><strong>버터갈릭새우</strong> — 100g 단위 판매, 칠리소스/버터갈릭소스 선택 가능 (20.5만동대)</li>
+        <li><strong>굴 요리</strong> — 치즈구이 또는 마늘·파프레이크 버전</li>
+        <li><strong>해산물 볶음밥</strong> — "매일 먹고 싶다"는 후기 많음 (10.9만동)</li>
+        <li>해산물 라면(하이산 미고이) — 현지인들도 즐겨 주문</li>
+        <li>모닝글로리 볶음 — 4.9만동, 사이드로 곁들이기 좋음</li>
+      </ol>
+      <div class="act-detail-subhead">ℹ️ 참고</div>
+      <ol class="act-detail-steps">
+        <li>2023년 JTBC '아는형님'에 소개된 후 한국인들 사이 더 유명해짐, 다낭 로컬 5대 씨푸드로도 꼽힘</li>
+        <li>영업시간 10:30~22:30, 연중무휴 — 예약 없으면 웨이팅 길 수 있음</li>
+        <li><strong>예약</strong>: 카카오톡 채널 '다낭목해산물식당' 친구추가 → 날짜/시간/인원 전달 (한글 가능)</li>
+        <li><strong>할인 팁</strong>: 일부 유튜브(다낭이쁜이 등) 소개 이미지/팔찌 화면 보여주면 10% 할인 받을 수 있다는 후기 있음</li>
       </ol>
     ` },
-  { id:'s25', day:2, time:'14:30', category:'transport', title:'리조트로 이동 · 짐 픽업',      description:'Grab으로 쉐라톤 복귀, 맡겨둔 짐 챙겨서 신라모노그램으로 출발',    location:'베만 → 쉐라톤',      cost:'Grab',      bookingStatus:'planned',   order:3 },
-  { id:'s17', day:2, time:'16:30', category:'sight',      title:'하미비치 산책',                description:'신라모노그램 도보 5분, 조용하고 한적한 로컬 비치 🌊',            location:'하미비치 (Ha My Beach)', cost:'무료',     bookingStatus:'planned',   order:4,
+  { id:'s25', day:2, time:'17:00', category:'transport', title:'리조트로 이동 · 짐 픽업',      description:'Grab으로 쉐라톤 복귀, 맡겨둔 짐 챙겨서 신라모노그램으로 출발',    location:'목식당 → 쉐라톤',    cost:'Grab',      bookingStatus:'planned',   order:4 },
+  { id:'s18', day:2, time:'19:00', category:'food',      title:'저녁 – Dining M',              description:'신라모노그램 내 레스토랑, 이동 없이 편하게 씨푸드·로컬·아시안', location:'신라모노그램 다낭 - Dining M', cost:'', bookingStatus:'planned', order:7,
     detail: `
       <ol class="act-detail-steps">
-        <li>다낭·호이안 사이에 위치한 <strong>한적하고 조용한 비치</strong> — 미케비치보다 훨씬 덜 붐빔</li>
-        <li>신라모노그램에서 <strong>도보 5분</strong> 거리 — 체크인 후 바로 산책 가능</li>
-        <li>오후 4시 이후는 해가 한풀 꺾여 걷기·물놀이하기 쾌적한 시간대</li>
+        <li>신라모노그램 <strong>호텔 내 레스토랑</strong> — 씨푸드·로컬·아시안 요리 다 가능</li>
+        <li>체크인 직후라 이동 없이 바로 이용 가능, 하루 종일 이동 많았던 날 편하게 마무리</li>
+        <li>영업시간: 조식 06:30~10:30 / 중식 11:00~14:00 / <strong>석식 17:00~22:00</strong> (매일, 날짜별로 변동 가능)</li>
+        <li>목·금요일 저녁엔 씨푸드 뷔페(18:00~21:00)도 하는데, 오늘(일요일)은 해당 없음</li>
       </ol>
     ` },
-  { id:'s18', day:2, time:'18:00', category:'food',      title:'저녁 – 호로콴',                description:'올드타운 근처 리뷰 최다 맛집, 한글간판 있어서 찾기 쉬움 🍜',     location:'호로콴 (Ho Ro Quan)', cost:'~2~3만원/인', bookingStatus:'planned', order:5,
-    detail: `
-      <ol class="act-detail-steps">
-        <li><strong>대표메뉴 소고기 쌀국수</strong> — 고기 푸짐, 저렴한 가격</li>
-        <li>추천메뉴: 타마린드 새우, 반쎄오, 화이트로즈, 튀김완탄, 닭쌀국수, 모닝글로리</li>
-        <li>영업시간 10:00~21:00, 현금·카드 결제 다 가능</li>
-        <li>올드타운에서 도보 약 15분 — 한글 간판 있어서 찾기 쉬움</li>
-      </ol>
-    ` },
-  { id:'s26', day:2, time:'19:30', category:'sight',     title:'호이안 야경 · 등불거리',        description:'호아이강 등불 거리 산책, 소원등(꽃등) 띄우기, 야시장 구경',       location:'호이안 올드타운',    cost:'등불 약 1~2만동', bookingStatus:'planned', order:6,
+  { id:'s26', day:2, time:'20:30', category:'sight',     title:'호이안 야경 · 등불거리',        description:'저녁은 이미 먹었으니 가볍게 등불거리 산책 + 야시장 구경만',       location:'호이안 올드타운',    cost:'등불 약 1~2만동', bookingStatus:'planned', order:8,
     detail: `
       <ol class="act-detail-steps">
         <li>밤이 되면 호아이강 골목이 <strong>수천 개 등불</strong>로 밝혀짐 — 다낭·호이안 여행 필수 코스</li>
@@ -3323,7 +3301,11 @@ const SAMPLE_ACTS = [
         <li>음력 14일엔 전기 조명을 끄고 등불만 켜는 등불축제가 열리는데, 평소 밤에도 충분히 예쁨</li>
       </ol>
     ` },
-  { id:'s20', day:2, time:'16:00', category:'hotel',     title:'신라모노그램 체크인',           description:'체크인 후 취침 준비',                                             location:'신라모노그램 다낭',  cost:'',          bookingStatus:'planned',   order:7 },
+  { id:'s20', day:2, time:'18:30', category:'hotel',     title:'신라모노그램 체크인',           description:'체크인 후 짐 내려놓고 바로 저녁 먹으러',                          location:'신라모노그램 다낭',  cost:'',          bookingStatus:'planned',   order:6 },
+
+  // ── Day 4: 9/14(월) ──
+  { id:'s29', day:3, time:'09:00', category:'food',      title:'조식',                         description:'Dining M 조식, 이용시간 06:30~10:30',                             location:'신라모노그램 다낭 - Dining M', cost:'조식 포함', bookingStatus:'confirmed', order:0 },
+  { id:'s30', day:3, time:'12:00', category:'hotel',     title:'체크아웃',                     description:'신라모노그램 체크아웃',                                           location:'신라모노그램 다낭',  cost:'',          bookingStatus:'confirmed', order:1 },
 
   // ── Day 5: 9/15(화) 귀국 ──
   { id:'s21', day:4, time:'01:50', category:'flight',    title:'다낭 → 인천 탑승',             description:'에어서울 RS0512. 심야 출발! 01:20 이전 탑승구 도착 필수',          location:'다낭 국제공항 T2',   cost:'왕복 포함', bookingStatus:'confirmed', order:0 },
