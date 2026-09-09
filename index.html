@@ -493,6 +493,13 @@
       color: var(--notice-text);
       line-height: 1.6;
     }
+    .act-detail-subhead {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 14px 0 6px;
+    }
+    .act-detail-subhead:first-child { margin-top: 0; }
 
     .act-actions {
       display: none;
@@ -3181,14 +3188,23 @@ const SAMPLE_ACTS = [
   { id:'s2',  day:0, time:'20:55', category:'flight',    title:'인천 → 다낭 탑승',             description:'에어서울 RS0511. 비행 4시간 45분',                                 location:'인천국제공항 T1',    cost:'왕복 포함', bookingStatus:'confirmed', order:1 },
   { id:'s3',  day:0, time:'23:40', category:'transport', title:'다낭 공항 도착 · 리조트 이동', description:'쉐라톤 그랜드 다낭까지 약 14km · 차로 25분. 심야라 Grab 배차 지연될 수 있음 — 안 잡히면 공항 택시 이용', location:'다낭 국제공항 T2',   cost:'Grab 약 15~20만동', bookingStatus:'confirmed', order:2,
     detail: `
+      <div class="act-detail-subhead">✈️ 한국에서 미리 준비할 것</div>
       <ol class="act-detail-steps">
-        <li>수하물 찾고 <strong>국제선 입국장</strong> 밖으로 나가기</li>
-        <li>2·3번 기둥 사이 횡단보도 → 도로 사이 횡단보도 한 번 더 건너기</li>
-        <li>왼쪽에 보이는 건물이 Grab 픽업 장소 — 건물 앞 <strong>그늘막</strong>에서 기사와 만남</li>
-        <li>Grab 앱에서 차량 호출 → <strong>"공항" 픽업 옵션</strong> 선택, 차종·예상요금 확인 후 호출</li>
-        <li>화면에 뜬 <strong>차량 번호판</strong>이 실제 차량과 일치하는지 반드시 확인 후 탑승</li>
+        <li><strong>앱 설치 및 카드 등록</strong> — 한국에서 미리 그랩 앱 다운로드하고 결제카드 등록. 인증번호는 한국 번호로 미리 받아두는 게 안전</li>
+        <li><strong>유심/포켓와이파이</strong> — 공항 도착 즉시 인터넷 연결되어야 앱 호출 가능</li>
       </ol>
-      <div class="act-detail-warn">⚠️ 픽업존 근처에서 "그랩?"이라며 먼저 다가오는 사람은 비공식 기사일 수 있어요. 반드시 앱에 뜬 차량번호를 다시 확인하세요.</div>
+      <div class="act-detail-subhead">🚕 공항 도착 후 탑승 과정</div>
+      <ol class="act-detail-steps">
+        <li>짐 찾고 입국장 밖으로 나오면 바로 그랩 앱 열기</li>
+        <li><strong>목적지</strong>: 숙소 이름 검색해서 지정</li>
+        <li><strong>출발지</strong>: 'Da Nang International Airport (DAD) - International Terminal' 선택 → 세부 픽업 포인트(그랩 픽업존 또는 기둥번호) 지정</li>
+        <li>배차 완료되면 차량번호·기사위치 표시 — 기사가 채팅으로 위치 물어보면 서있는 기둥번호나 사진 보내주기</li>
+      </ol>
+      <div class="act-detail-subhead">⚠️ 이용 팁 및 주의사항</div>
+      <ol class="act-detail-steps">
+        <li><strong>공항 통행료</strong> 별도 부과 (약 1만~1.5만동) — 카드결제는 자동 합산, 현금결제는 기사가 요구할 수 있음</li>
+        <li>"그랩? 그랩?" 하며 먼저 다가오는 호객 기사는 <strong>절대 타지 말 것</strong> — 앱으로 직접 호출한 차량인지, 표시된 차량번호판과 일치하는지 반드시 확인 후 탑승</li>
+      </ol>
     ` },
   { id:'s4',  day:0, time:'24:00', category:'hotel',     title:'숙소 체크인',                  description:'늦은 도착 후 취침',                     location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'',          bookingStatus:'confirmed', order:3 },
 
@@ -3280,10 +3296,33 @@ const SAMPLE_ACTS = [
         <li>⚠️ 외국인/현지인 가격이 다르다는 후기 있음 — 메뉴판 가격 미리 확인</li>
       </ol>
     ` },
-  { id:'s25', day:2, time:'14:30', category:'transport', title:'리조트로 이동',                description:'Grab으로 쉐라톤으로 복귀',                                       location:'베만 → 쉐라톤',      cost:'Grab',      bookingStatus:'planned',   order:3 },
-  { id:'s17', day:2, time:'16:30', category:'rest',      title:'카페 휴식',                    description:'코코넛 커피 한 잔 ☕ 공항 가기 전 마지막 여유',                  location:'시내 카페',          cost:'자유',      bookingStatus:'planned',   order:4 },
-  { id:'s18', day:2, time:'18:00', category:'food',      title:'마지막 저녁 – 씨푸드',         description:'다낭 마지막 만찬 🦞 아쉬운 마음 달래기',                         location:'씨푸드 레스토랑',    cost:'~6만원/인', bookingStatus:'planned',   order:5 },
-  { id:'s19', day:2, time:'20:30', category:'transport', title:'리조트 이동 · 짐 픽업',        description:'맡겨둔 짐 찾아서 신라모노그램으로 이동',                          location:'쉐라톤 → 신라모노그램', cost:'Grab/픽업', bookingStatus:'planned',   order:6 },
+  { id:'s25', day:2, time:'14:30', category:'transport', title:'리조트로 이동 · 짐 픽업',      description:'Grab으로 쉐라톤 복귀, 맡겨둔 짐 챙겨서 신라모노그램으로 출발',    location:'베만 → 쉐라톤',      cost:'Grab',      bookingStatus:'planned',   order:3 },
+  { id:'s17', day:2, time:'16:30', category:'sight',      title:'하미비치 산책',                description:'신라모노그램 도보 5분, 조용하고 한적한 로컬 비치 🌊',            location:'하미비치 (Ha My Beach)', cost:'무료',     bookingStatus:'planned',   order:4,
+    detail: `
+      <ol class="act-detail-steps">
+        <li>다낭·호이안 사이에 위치한 <strong>한적하고 조용한 비치</strong> — 미케비치보다 훨씬 덜 붐빔</li>
+        <li>신라모노그램에서 <strong>도보 5분</strong> 거리 — 체크인 후 바로 산책 가능</li>
+        <li>오후 4시 이후는 해가 한풀 꺾여 걷기·물놀이하기 쾌적한 시간대</li>
+      </ol>
+    ` },
+  { id:'s18', day:2, time:'18:00', category:'food',      title:'저녁 – 호로콴',                description:'올드타운 근처 리뷰 최다 맛집, 한글간판 있어서 찾기 쉬움 🍜',     location:'호로콴 (Ho Ro Quan)', cost:'~2~3만원/인', bookingStatus:'planned', order:5,
+    detail: `
+      <ol class="act-detail-steps">
+        <li><strong>대표메뉴 소고기 쌀국수</strong> — 고기 푸짐, 저렴한 가격</li>
+        <li>추천메뉴: 타마린드 새우, 반쎄오, 화이트로즈, 튀김완탄, 닭쌀국수, 모닝글로리</li>
+        <li>영업시간 10:00~21:00, 현금·카드 결제 다 가능</li>
+        <li>올드타운에서 도보 약 15분 — 한글 간판 있어서 찾기 쉬움</li>
+      </ol>
+    ` },
+  { id:'s26', day:2, time:'19:30', category:'sight',     title:'호이안 야경 · 등불거리',        description:'호아이강 등불 거리 산책, 소원등(꽃등) 띄우기, 야시장 구경',       location:'호이안 올드타운',    cost:'등불 약 1~2만동', bookingStatus:'planned', order:6,
+    detail: `
+      <ol class="act-detail-steps">
+        <li>밤이 되면 호아이강 골목이 <strong>수천 개 등불</strong>로 밝혀짐 — 다낭·호이안 여행 필수 코스</li>
+        <li><strong>소원등(꽃등) 띄우기</strong> — 강에 작은 종이등불 띄우는 체험, 1~2만동 정도</li>
+        <li>강가 <strong>호이안 야시장</strong>도 매일 열려서 같이 구경하기 좋음</li>
+        <li>음력 14일엔 전기 조명을 끄고 등불만 켜는 등불축제가 열리는데, 평소 밤에도 충분히 예쁨</li>
+      </ol>
+    ` },
   { id:'s20', day:2, time:'16:00', category:'hotel',     title:'신라모노그램 체크인',           description:'체크인 후 취침 준비',                                             location:'신라모노그램 다낭',  cost:'',          bookingStatus:'planned',   order:7 },
 
   // ── Day 5: 9/15(화) 귀국 ──
