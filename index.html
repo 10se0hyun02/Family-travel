@@ -988,6 +988,63 @@
     }
     .cl-text { font-size: 0.875rem; flex: 1; min-width: 0; }
 
+    /* ── 숙소1/2 전환 ─────────────────────────── */
+    .hotel-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      padding: 5px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--rsm);
+      margin-bottom: 18px;
+    }
+    .hotel-switch-btn {
+      padding: 10px 8px;
+      border: none;
+      border-radius: 4px;
+      background: transparent;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      line-height: 1.5;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    }
+    .hotel-switch-btn span { display: block; font-size: 0.6875rem; font-weight: 500; margin-top: 1px; }
+    .hotel-switch-btn.active {
+      background: var(--card);
+      color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+    .hotel-switch-btn.active span { color: var(--primary); opacity: 0.85; }
+
+    .hotel-section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary-light);
+      border-radius: var(--rsm);
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .hotel-section-name { font-size: 0.9375rem; font-weight: 700; color: var(--text); }
+    .hotel-section-dates { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .hotel-ref-link {
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 11px;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
     .cl-filter-bar {
       display: flex;
       gap: 7px;
@@ -2332,19 +2389,19 @@
   <div id="viewHotel" style="display:none">
     <main class="main-content">
 
-      <div class="cl-filter-bar">
-        <button class="cl-filter-chip active" id="hotelTabBtn1" onclick="switchHotelTab(1)">숙소1: 쉐라톤 그랜드 다낭 (9/11~9/13)</button>
-        <button class="cl-filter-chip" id="hotelTabBtn2" onclick="switchHotelTab(2)">숙소2: 신라모노그램 다낭 (9/13~9/14)</button>
+      <div class="hotel-switch">
+        <button class="hotel-switch-btn active" id="hotelTabBtn1" onclick="switchHotelTab(1)">숙소1<br><span>쉐라톤 · 9/11~9/13</span></button>
+        <button class="hotel-switch-btn" id="hotelTabBtn2" onclick="switchHotelTab(2)">숙소2<br><span>신라모노그램 · 9/13~9/14</span></button>
       </div>
 
       <div id="hotelBlock1">
 
-      <div class="flight-leg-title">
-        9/11(금) ~ 9/13(일)
-        <span class="direction-chip">숙소 1</span>
-      </div>
-      <div style="font-size:0.8125rem; margin:-6px 0 14px;">
-        📎 <a href="https://blog.naver.com/11_28c/224323617322" target="_blank" rel="noopener" style="color:var(--primary)">쉐라톤 그랜드 다낭 참고 블로그</a>
+      <div class="hotel-section-head">
+        <div>
+          <div class="hotel-section-name">쉐라톤 그랜드 다낭 비치 리조트 & 스파</div>
+          <div class="hotel-section-dates">9/11(금) ~ 9/13(일)</div>
+        </div>
+        <a href="https://blog.naver.com/11_28c/224323617322" target="_blank" rel="noopener" class="hotel-ref-link">📎 참고 블로그</a>
       </div>
       <div class="booking-info-card">
         <div class="booking-row">
@@ -2408,12 +2465,12 @@
 
       <div id="hotelBlock2" style="display:none">
 
-      <div class="flight-leg-title">
-        9/13(일) ~ 9/14(월)
-        <span class="direction-chip">숙소 2</span>
-      </div>
-      <div style="font-size:0.8125rem; margin:-6px 0 14px;">
-        📎 <a href="https://blog.naver.com/drop_two0223/224392243619" target="_blank" rel="noopener" style="color:var(--primary)">신라모노그램 다낭 참고 블로그</a>
+      <div class="hotel-section-head">
+        <div>
+          <div class="hotel-section-name">신라모노그램 다낭</div>
+          <div class="hotel-section-dates">9/13(일) ~ 9/14(월)</div>
+        </div>
+        <a href="https://blog.naver.com/drop_two0223/224392243619" target="_blank" rel="noopener" class="hotel-ref-link">📎 참고 블로그</a>
       </div>
       <div class="booking-info-card">
         <div class="booking-row">
