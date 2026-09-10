@@ -9,126 +9,120 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── Tropical Beach Light (기본) ── */
+    /* ── Formal Light (기본) ── */
     :root {
-      --primary: #0a7e9a;
-      --primary-light: #d5eff7;
-      --accent: #d4714a;
-      --bg: #f0ebe3;
-      --bg2: #f5f0e8;
-      --card: #fffcf8;
-      --text: #1a3440;
-      --muted: #6e8a94;
-      --border: #d8d0c4;
-      --shadow: 0 2px 14px rgba(10,100,130,0.10);
-      --header-from: #1a5868;
-      --header-mid:  #157896;
-      --header-to:   #0ea09c;
-      --header-text: #e8f8ff;
-      --dday-bg: rgba(255,255,255,0.22); --dday-text: #e8f8ff;
-      --bk-conf-bg: #d6f0e0;  --bk-conf-text: #1a6b3a;
-      --bk-pend-bg: #fef4d6;  --bk-pend-text: #8a5c00;
-      --bk-plan-bg: #d5eef8;  --bk-plan-text: #0a5e7a;
-      --act-desc: #4a8090;
-      --notice-bg: #fefbe8; --notice-border: #ead97a; --notice-text: #6b5000;
-      --btn-edit-bg: #ccecf6;  --btn-edit-text: #085e78;
-      --btn-del-bg:  #fde8e8;  --btn-del-text:  #b91c1c;
-      --radius: 16px; --rsm: 10px;
+      --primary: #24425f;
+      --primary-light: #e6ebf1;
+      --accent: #8a6d3b;
+      --bg: #f4f5f7;
+      --bg2: #eceef1;
+      --card: #ffffff;
+      --text: #1c2530;
+      --muted: #6b7684;
+      --border: #dde1e6;
+      --shadow: 0 1px 8px rgba(15,23,42,0.08);
+      --header-from: #24425f;
+      --header-mid:  #24425f;
+      --header-to:   #24425f;
+      --header-text: #1c2530;
+      --dday-bg: var(--bg); --dday-text: var(--primary);
+      --bk-conf-bg: #e3ede5;  --bk-conf-text: #2f5b38;
+      --bk-pend-bg: #f2ecd9;  --bk-pend-text: #6b5a2e;
+      --bk-plan-bg: #e6ebf1;  --bk-plan-text: #24425f;
+      --act-desc: #56626f;
+      --notice-bg: #f7f3e8; --notice-border: #ddd1a8; --notice-text: #6b5a2e;
+      --btn-edit-bg: #e6ebf1;  --btn-edit-text: #24425f;
+      --btn-del-bg:  #f2e4e1;  --btn-del-text:  #8a3a2e;
+      --radius: 8px; --rsm: 5px;
     }
 
-    /* ── Tokyo Night Dark (시스템 다크) ── */
+    /* ── Formal Dark (시스템 다크) ── */
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --primary: #7aa2f7;
-        --primary-light: #1e2a4a;
-        --accent: #e08060;
-        --bg: #0f1e2e;
-        --bg2: #152535;
-        --card: #1a2e42;
-        --text: #c0caf5;
-        --muted: #507090;
-        --border: #1e3248;
+        --primary: #8ba4c2;
+        --primary-light: #1e2c3d;
+        --accent: #b89968;
+        --bg: #14181f;
+        --bg2: #191e26;
+        --card: #1c222b;
+        --text: #dbe1e8;
+        --muted: #7a8794;
+        --border: #2a3038;
         --shadow: 0 2px 16px rgba(0,0,0,0.4);
-        --header-from: #060e1a;
-        --header-mid:  #0a1e30;
-        --header-to:   #0e3a50;
-        --header-text: #c5e4ff;
-      --dday-bg: rgba(255,255,255,0.18); --dday-text: #c5e4ff;
-        --bk-conf-bg: #1a3328; --bk-conf-text: #9ece6a;
-        --bk-pend-bg: #2a2010; --bk-pend-text: #e0af68;
-        --bk-plan-bg: #1e2235; --bk-plan-text: #7aa2f7;
-        --act-desc: #7982b0;
-        --notice-bg: #1f1900; --notice-border: #3d3200; --notice-text: #c9a227;
-        --btn-edit-bg: #1a2a4a; --btn-edit-text: #7aa2f7;
-        --btn-del-bg:  #2a1a1a; --btn-del-text:  #f7768e;
+        --header-from: #1c222b;
+        --header-mid:  #1c222b;
+        --header-to:   #1c222b;
+        --header-text: #dbe1e8;
+      --dday-bg: var(--bg); --dday-text: var(--primary);
+        --bk-conf-bg: #1e2e22; --bk-conf-text: #8fbf9a;
+        --bk-pend-bg: #2c2718; --bk-pend-text: #cbb27a;
+        --bk-plan-bg: #1e2c3d; --bk-plan-text: #8ba4c2;
+        --act-desc: #92a0ae;
+        --notice-bg: #241f14; --notice-border: #3d3520; --notice-text: #cbb27a;
+        --btn-edit-bg: #1e2c3d; --btn-edit-text: #8ba4c2;
+        --btn-del-bg:  #2c211e; --btn-del-text:  #c98a78;
       }
     }
 
     /* ── 수동 다크 모드 ── */
     [data-theme="dark"] {
-      --primary: #7aa2f7;
-      --primary-light: #1e2a4a;
-      --accent: #bb9af7;
-      --bg: #1a1b2e;
-      --bg2: #1f2335;
-      --card: #24283b;
-      --text: #c0caf5;
-      --muted: #565f89;
-      --border: #292e42;
+      --primary: #8ba4c2;
+      --primary-light: #1e2c3d;
+      --accent: #b89968;
+      --bg: #14181f;
+      --bg2: #191e26;
+      --card: #1c222b;
+      --text: #dbe1e8;
+      --muted: #7a8794;
+      --border: #2a3038;
       --shadow: 0 2px 16px rgba(0,0,0,0.4);
-      --header-from: #16161e;
-      --header-mid:  #1a1b2e;
-      --header-to:   #1f2335;
-      --header-text: #c0caf5;
-      --dday-bg: rgba(255,255,255,0.18); --dday-text: #c5e4ff;
-      --bk-conf-bg: #1a3328; --bk-conf-text: #9ece6a;
-      --bk-pend-bg: #2a2010; --bk-pend-text: #e0af68;
-      --bk-plan-bg: #1e2235; --bk-plan-text: #7aa2f7;
-      --act-desc: #7982b0;
-      --notice-bg: #1f1900; --notice-border: #3d3200; --notice-text: #c9a227;
-      --btn-edit-bg: #1a2a4a; --btn-edit-text: #7aa2f7;
-      --btn-del-bg:  #2a1a1a; --btn-del-text:  #f7768e;
+      --header-from: #1c222b;
+      --header-mid:  #1c222b;
+      --header-to:   #1c222b;
+      --header-text: #dbe1e8;
+      --dday-bg: var(--bg); --dday-text: var(--primary);
+      --bk-conf-bg: #1e2e22; --bk-conf-text: #8fbf9a;
+      --bk-pend-bg: #2c2718; --bk-pend-text: #cbb27a;
+      --bk-plan-bg: #1e2c3d; --bk-plan-text: #8ba4c2;
+      --act-desc: #92a0ae;
+      --notice-bg: #241f14; --notice-border: #3d3520; --notice-text: #cbb27a;
+      --btn-edit-bg: #1e2c3d; --btn-edit-text: #8ba4c2;
+      --btn-del-bg:  #2c211e; --btn-del-text:  #c98a78;
     }
 
     /* ── 수동 라이트 모드 ── */
     [data-theme="light"] {
-      --primary: #0a7e9a;
-      --primary-light: #d5eff7;
-      --accent: #d4714a;
-      --bg: #f0ebe3;
-      --bg2: #f5f0e8;
-      --card: #fffcf8;
-      --text: #1a3440;
-      --muted: #6e8a94;
-      --border: #d8d0c4;
-      --shadow: 0 2px 14px rgba(10,100,130,0.10);
-      --header-from: #1a5868;
-      --header-mid:  #157896;
-      --header-to:   #0ea09c;
-      --header-text: #e8f8ff;
-      --dday-bg: rgba(255,255,255,0.22); --dday-text: #e8f8ff;
-      --bk-conf-bg: #d6f0e0;  --bk-conf-text: #1a6b3a;
-      --bk-pend-bg: #fef4d6;  --bk-pend-text: #8a5c00;
-      --bk-plan-bg: #d5eef8;  --bk-plan-text: #0a5e7a;
-      --act-desc: #4a8090;
-      --notice-bg: #fefbe8; --notice-border: #ead97a; --notice-text: #6b5000;
-      --btn-edit-bg: #ccecf6;  --btn-edit-text: #085e78;
-      --btn-del-bg:  #fde8e8;  --btn-del-text:  #b91c1c;
+      --primary: #24425f;
+      --primary-light: #e6ebf1;
+      --accent: #8a6d3b;
+      --bg: #f4f5f7;
+      --bg2: #eceef1;
+      --card: #ffffff;
+      --text: #1c2530;
+      --muted: #6b7684;
+      --border: #dde1e6;
+      --shadow: 0 1px 8px rgba(15,23,42,0.08);
+      --header-from: #24425f;
+      --header-mid:  #24425f;
+      --header-to:   #24425f;
+      --header-text: #1c2530;
+      --dday-bg: var(--bg); --dday-text: var(--primary);
+      --bk-conf-bg: #e3ede5;  --bk-conf-text: #2f5b38;
+      --bk-pend-bg: #f2ecd9;  --bk-pend-text: #6b5a2e;
+      --bk-plan-bg: #e6ebf1;  --bk-plan-text: #24425f;
+      --act-desc: #56626f;
+      --notice-bg: #f7f3e8; --notice-border: #ddd1a8; --notice-text: #6b5a2e;
+      --btn-edit-bg: #e6ebf1;  --btn-edit-text: #24425f;
+      --btn-del-bg:  #f2e4e1;  --btn-del-text:  #8a3a2e;
     }
 
     body {
       font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
-      background-image: url("data:image/svg+xml,%3Csvg width='80' height='24' viewBox='0 0 80 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12 C20 4 40 20 80 12' fill='none' stroke='rgba(10%2C126%2C154%2C0.055)' stroke-width='2'/%3E%3C/svg%3E");
-      background-size: 80px 24px;
       color: var(--text);
       min-height: 100vh;
       transition: background-color 0.3s, color 0.3s;
     }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) body { background-image: none; }
-    }
-    [data-theme="dark"] body { background-image: none; }
 
     /* ── Header ─────────────────────────────── */
     .trip-header {
@@ -202,7 +196,7 @@
     .participant-chip {
       background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 4px 13px;
       font-size: 0.8125rem;
       color: var(--text);
@@ -259,7 +253,7 @@
       display: none;
       background: var(--primary);
       color: #fff;
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 2px 10px;
       font-size: 0.6875rem;
       font-weight: 700;
@@ -409,7 +403,7 @@
 
     .bk-badge {
       flex-shrink: 0;
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 2px 8px;
       font-size: 0.6875rem;
       font-weight: 700;
@@ -439,7 +433,7 @@
       background: var(--primary-light);
       color: var(--primary);
       border: none;
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 3px 10px;
       font-family: inherit;
       font-size: 0.6875rem;
@@ -638,7 +632,7 @@
     .bk-status-badge {
       background: var(--bk-conf-bg);
       color: var(--bk-conf-text);
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 3px 10px;
       font-size: 0.75rem;
       font-weight: 700;
@@ -657,7 +651,7 @@
     .flight-leg-title .direction-chip {
       background: var(--primary-light);
       color: var(--primary);
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 2px 10px;
       font-size: 0.75rem;
     }
@@ -682,7 +676,7 @@
       font-size: 0.75rem;
       color: var(--muted);
       background: var(--bg);
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 3px 10px;
     }
 
@@ -906,14 +900,14 @@
     }
     .cl-progress-track {
       background: var(--border);
-      border-radius: 99px;
+      border-radius: 4px;
       height: 8px;
       overflow: hidden;
     }
     .cl-progress-bar {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: var(--primary);
       height: 100%;
-      border-radius: 99px;
+      border-radius: 4px;
       transition: width 0.4s ease;
     }
     .cl-section {
@@ -970,7 +964,7 @@
     .cl-filter-chip {
       flex-shrink: 0;
       padding: 5px 13px;
-      border-radius: 20px;
+      border-radius: 6px;
       border: 1.5px solid var(--border);
       background: var(--card);
       color: var(--muted);
@@ -1023,7 +1017,7 @@
     .vote-who-chip {
       flex-shrink: 0;
       padding: 6px 14px;
-      border-radius: 20px;
+      border-radius: 6px;
       border: 1.5px solid var(--border);
       background: var(--card);
       color: var(--muted);
@@ -1076,7 +1070,7 @@
       font-weight: 600;
       background: var(--primary-light);
       color: var(--primary);
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 2px 8px;
       flex-shrink: 0;
     }
@@ -1212,7 +1206,7 @@
       align-items: center;
       background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 24px;
+      border-radius: 6px;
       padding: 4px 5px;
       cursor: pointer;
       transition: background 0.2s;
@@ -1248,7 +1242,7 @@
       justify-content: center;
       background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 3px 10px;
       min-width: 40px;
       cursor: pointer;
@@ -1302,7 +1296,7 @@
     .vote-who-label { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
     .vote-who-btn {
       display: flex; align-items: center; gap: 4px;
-      padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+      padding: 5px 12px; border-radius: 6px; border: 1.5px solid var(--border);
       background: var(--card); color: var(--text); font-size: 0.85rem;
       cursor: pointer; white-space: nowrap; transition: all .15s;
     }
@@ -1398,7 +1392,7 @@
       gap: 6px;
       background: var(--primary-light);
       color: var(--primary);
-      border-radius: 20px;
+      border-radius: 6px;
       padding: 6px 16px;
       font-size: 0.8125rem;
       font-weight: 700;
@@ -1414,7 +1408,7 @@
     .letter-status-chip {
       font-size: 0.75rem;
       padding: 4px 13px;
-      border-radius: 20px;
+      border-radius: 6px;
       border: 1px solid var(--border);
       background: var(--bg2);
       color: var(--muted);
@@ -2037,7 +2031,7 @@
       display: block;
       margin: 0 auto;
       padding: 13px 36px;
-      border-radius: 24px;
+      border-radius: 6px;
       border: none;
       background: var(--primary);
       color: #fff;
@@ -2130,15 +2124,15 @@
   <!-- ── Section + Day Nav ── -->
   <div class="sticky-navs">
     <nav class="section-nav" id="sectionNav">
-      <button class="sec-tab active" id="secTab-schedule"  onclick="switchSection('schedule')" >🗓 일정</button>
-      <button class="sec-tab"        id="secTab-info"      onclick="switchSection('info')"     >📋 여행정보</button>
-      <button class="sec-tab"        id="secTab-hotel"     onclick="switchSection('hotel')"    >🏨 숙소정보</button>
-      <button class="sec-tab"        id="secTab-flight"    onclick="switchSection('flight')"   >✈️ 항공정보</button>
-      <button class="sec-tab"        id="secTab-bus"       onclick="switchSection('bus')"      style="display:none">🚌 리무진정보</button>
-      <button class="sec-tab"        id="secTab-checklist" onclick="switchSection('checklist')">☑️ 준비물</button>
-      <button class="sec-tab"        id="secTab-letter"    onclick="switchSection('letter')"   style="display:none">💌 편지</button>
-      <button class="sec-tab"        id="secTab-vote"      onclick="switchSection('vote')"     >🗳 투표</button>
-      <button class="sec-tab"        id="secTab-roulette"  onclick="switchSection('roulette')" >🎡 룰렛</button>
+      <button class="sec-tab active" id="secTab-schedule"  onclick="switchSection('schedule')" >일정</button>
+      <button class="sec-tab"        id="secTab-info"      onclick="switchSection('info')"     >여행정보</button>
+      <button class="sec-tab"        id="secTab-hotel"     onclick="switchSection('hotel')"    >숙소정보</button>
+      <button class="sec-tab"        id="secTab-flight"    onclick="switchSection('flight')"   >항공정보</button>
+      <button class="sec-tab"        id="secTab-bus"       onclick="switchSection('bus')"      style="display:none">리무진정보</button>
+      <button class="sec-tab"        id="secTab-checklist" onclick="switchSection('checklist')">준비물</button>
+      <button class="sec-tab"        id="secTab-letter"    onclick="switchSection('letter')"   style="display:none">편지</button>
+      <button class="sec-tab"        id="secTab-vote"      onclick="switchSection('vote')"     >투표</button>
+      <button class="sec-tab"        id="secTab-roulette"  onclick="switchSection('roulette')" >룰렛</button>
     </nav>
     <div class="day-nav-wrap" id="dayNavWrap">
       <nav class="day-nav" id="dayNav"></nav>
