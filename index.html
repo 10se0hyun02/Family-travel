@@ -18,7 +18,7 @@
       --bg2: #eceef1;
       --card: #ffffff;
       --text: #1c2530;
-      --muted: #6b7684;
+      --muted: #5a6572;
       --border: #dde1e6;
       --shadow: 0 1px 8px rgba(15,23,42,0.08);
       --header-from: #24425f;
@@ -29,7 +29,7 @@
       --bk-conf-bg: #e3ede5;  --bk-conf-text: #2f5b38;
       --bk-pend-bg: #f2ecd9;  --bk-pend-text: #6b5a2e;
       --bk-plan-bg: #e6ebf1;  --bk-plan-text: #24425f;
-      --act-desc: #56626f;
+      --act-desc: #48525e;
       --notice-bg: #f7f3e8; --notice-border: #ddd1a8; --notice-text: #6b5a2e;
       --btn-edit-bg: #e6ebf1;  --btn-edit-text: #24425f;
       --btn-del-bg:  #f2e4e1;  --btn-del-text:  #8a3a2e;
@@ -99,7 +99,7 @@
       --bg2: #eceef1;
       --card: #ffffff;
       --text: #1c2530;
-      --muted: #6b7684;
+      --muted: #5a6572;
       --border: #dde1e6;
       --shadow: 0 1px 8px rgba(15,23,42,0.08);
       --header-from: #24425f;
@@ -110,7 +110,7 @@
       --bk-conf-bg: #e3ede5;  --bk-conf-text: #2f5b38;
       --bk-pend-bg: #f2ecd9;  --bk-pend-text: #6b5a2e;
       --bk-plan-bg: #e6ebf1;  --bk-plan-text: #24425f;
-      --act-desc: #56626f;
+      --act-desc: #48525e;
       --notice-bg: #f7f3e8; --notice-border: #ddd1a8; --notice-text: #6b5a2e;
       --btn-edit-bg: #e6ebf1;  --btn-edit-text: #24425f;
       --btn-del-bg:  #f2e4e1;  --btn-del-text:  #8a3a2e;
@@ -399,7 +399,20 @@
       margin-bottom: 5px;
     }
 
-    .act-title { font-size: 0.9375rem; font-weight: 700; line-height: 1.4; }
+    .act-title { font-size: 1rem; font-weight: 700; line-height: 1.45; }
+
+    .meal-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin-right: 7px;
+      vertical-align: middle;
+      letter-spacing: 0.2px;
+    }
 
     .bk-badge {
       flex-shrink: 0;
@@ -416,16 +429,17 @@
     .act-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      font-size: 0.75rem;
+      gap: 10px;
+      font-size: 0.8125rem;
+      line-height: 1.5;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .act-desc {
-      font-size: 0.8125rem;
+      font-size: 0.875rem;
       color: var(--act-desc);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .act-detail-btn {
@@ -445,27 +459,28 @@
     .act-detail-btn:hover { opacity: 0.8; }
 
     .act-detail-steps {
-      padding-left: 20px;
-      font-size: 0.875rem;
-      line-height: 1.7;
+      padding-left: 22px;
+      font-size: 0.9375rem;
+      line-height: 1.75;
       color: var(--text);
     }
-    .act-detail-steps li { margin-bottom: 8px; }
+    .act-detail-steps li { margin-bottom: 10px; }
+    .act-detail-steps li:last-child { margin-bottom: 0; }
     .act-detail-warn {
       margin-top: 14px;
       background: var(--notice-bg);
       border: 1px solid var(--notice-border);
       border-radius: var(--rsm);
-      padding: 11px 13px;
-      font-size: 0.8125rem;
+      padding: 12px 14px;
+      font-size: 0.875rem;
       color: var(--notice-text);
-      line-height: 1.6;
+      line-height: 1.65;
     }
     .act-detail-subhead {
-      font-size: 0.8125rem;
+      font-size: 0.875rem;
       font-weight: 700;
       color: var(--primary);
-      margin: 14px 0 6px;
+      margin: 16px 0 8px;
     }
     .act-detail-subhead:first-child { margin-top: 0; }
 
@@ -513,7 +528,7 @@
       padding: 24px;
     }
 
-    .modal-title { font-size: 1.0625rem; font-weight: 700; margin-bottom: 18px; }
+    .modal-title { font-size: 1.125rem; font-weight: 700; line-height: 1.4; margin-bottom: 18px; }
 
     .fg { margin-bottom: 14px; }
     .fg label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.3px; }
@@ -872,6 +887,26 @@
     .info-row:last-child { border-bottom: none; }
     .info-row-label { color: var(--muted); min-width: 80px; flex-shrink: 0; }
     .info-row-val   { font-weight: 600; line-height: 1.5; }
+
+    /* 자세히보기 팝업 안에서는 좁은 폭에 맞춰 라벨/값을 위아래로 분리 */
+    #actDetailBody .info-row {
+      flex-direction: column;
+      gap: 3px;
+      padding: 10px 0;
+    }
+    #actDetailBody .info-row-label {
+      min-width: 0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    #actDetailBody .info-row-val {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.6;
+    }
     .info-tag {
       display: inline-block;
       background: var(--primary-light);
@@ -3233,11 +3268,13 @@ const SAMPLE_ACTS = [
         <li>이용시간 07:00~19:00 — 낮엔 뜨거우니 오전/늦은 오후가 쾌적</li>
       </ol>
     ` },
-  { id:'s8',  day:1, time:'13:00', category:'food',      title:'선베드 휴식 및 간단 점심',      description:'수영장 옆 BAR에서 간단식사 🍹 메뉴는 피자, 수제버거, 파스타',    location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'-', bookingStatus:'planned', order:1788486303665,
+  { id:'s8',  day:1, time:'13:00', category:'food',      title:'GRAB 배달 간단 점심',          description:'선베드에서 쉬면서 그랩푸드로 배달 시켜먹기 🛵',                   location:'쉐라톤 그랜드 다낭 비치 리조트 & 스파', cost:'-', bookingStatus:'planned', order:1788486303665,
     detail: `
-      <div class="info-row"><span class="info-row-label">바 이름</span><span class="info-row-val">Poolside Bar</span></div>
-      <div class="info-row"><span class="info-row-label">분위기</span><span class="info-row-val">캐주얼한 야외 풀사이드 바</span></div>
-      <div class="info-row"><span class="info-row-label">메뉴</span><span class="info-row-val">애피타이저·타파스·라이트밀·샐러드·파스타, 맥주·음료</span></div>
+      <ol class="act-detail-steps">
+        <li>수영장 선베드에서 쉬면서 <strong>그랩푸드로 배달</strong> 시켜 편하게 점심 해결</li>
+        <li>사용법은 여행정보 탭 '그랩 배달 시켜먹기' 참고</li>
+        <li>숙소 정확한 위치(풀사이드/객실 번호)를 배달 메모에 남겨두면 헷갈림 없이 수령 가능</li>
+      </ol>
     ` },
   { id:'s9',  day:1, time:'16:00', category:'transport', title:'시내 이동',                    description:'Grab으로 시내까지 약 15~20분',                                   location:'리조트 → 시내',      cost:'Grab',      bookingStatus:'planned',   order:1788486322048 },
   { id:'s10', day:1, time:'19:00', category:'food',      title:'저녁 – 안토이',                description:'미쉐린 빕구르망 베트남 로컬식당. 대표메뉴 반쎄오. 영업시간 10:30~21:30', location:'안토이 (An Thoi) - 114 Bạch Đằng, Hải Châu',    cost:'~6만원/인', bookingStatus:'planned',   order:5,
@@ -3524,8 +3561,18 @@ function renderDayContent(di) {
     </div>`;
 }
 
+function mealLabel(a) {
+  if (a.category !== 'food') return '';
+  const h = parseInt((a.time || '').split(':')[0], 10);
+  if (isNaN(h)) return '';
+  if (h < 11) return '아침';
+  if (h < 17) return '점심';
+  return '저녁';
+}
+
 function cardHtml(a, idx = 0) {
   const icon    = a.icon || CAT_ICONS[a.category] || '📌';
+  const meal    = mealLabel(a);
   return `
     <div class="activity-card cat-${a.category||'other'}" id="card-${a.id}" style="animation-delay:${idx * 0.06}s">
       <div class="act-header">
@@ -3533,7 +3580,7 @@ function cardHtml(a, idx = 0) {
         <span class="act-icon">${icon}</span>
         <div class="act-info">
           <div class="act-title-row">
-            <span class="act-title">${esc(a.title)}</span>
+            <span class="act-title">${meal ? `<span class="meal-badge">${meal}</span>` : ''}${esc(a.title)}</span>
             ${a.detail ? `<button class="act-detail-btn" onclick="showActDetail('${a.id}')">🔍 자세히보기</button>` : ''}
           </div>
           <div class="act-meta">
