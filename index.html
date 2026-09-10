@@ -572,7 +572,7 @@
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.45);
-      z-index: 10000;
+      z-index: 1000;
       align-items: center;
       justify-content: center;
       padding: 16px;
@@ -2100,22 +2100,6 @@
       animation: splashFadeUp 0.5s ease 1.32s forwards;
     }
 
-    .splash-esim {
-      margin-top: 16px;
-      padding: 9px 18px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.28);
-      border-radius: 24px;
-      color: rgba(255,255,255,0.9);
-      font-family: inherit;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      cursor: pointer;
-      opacity: 0;
-      animation: splashFadeUp 0.5s ease 1.4s forwards;
-    }
-    .splash-esim:active { transform: scale(0.97); }
-
     @keyframes splashFadeUp {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -2260,7 +2244,6 @@
     </div>
   </div>
   <button class="splash-btn" onclick="enterApp()">여행 출발! ✨</button>
-  <button class="splash-esim" id="esimSplash" hidden onclick="openModal('modalEsim')">📱 출발 전 eSIM 준비 안내 보기</button>
   <div class="splash-copy">ⓒ 서현</div>
 </div>
 
@@ -4724,11 +4707,19 @@ if (/KAKAOTALK/i.test(navigator.userAgent) && /Android/i.test(navigator.userAgen
   if (el) el.style.display = 'flex';
 })();
 
+// eSIM 안내: 오늘 ~ 9/11(금) 자정까지만 노출
+function esimNoticeActive() {
+  return Date.now() < new Date('2026-09-12T00:00:00+09:00').getTime();
+}
+
 function enterApp() {
   const el = document.getElementById('splashScreen');
   if (!el) return;
   el.classList.add('hiding');
-  setTimeout(() => el.remove(), 560);
+  setTimeout(() => {
+    el.remove();
+    if (esimNoticeActive()) openModal('modalEsim');
+  }, 560);
 }
 
 initFb();
@@ -4741,14 +4732,11 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// eSIM 안내: 오늘 ~ 9/11(금) 자정까지만 노출 (입장화면 + 메인 배너)
+// eSIM 안내 배너: 노출 기간에만 메인 상단에 표시
 (function () {
-  const cutoff = new Date('2026-09-12T00:00:00+09:00');
-  if (Date.now() >= cutoff.getTime()) return;
-  ['esimBanner', 'esimSplash'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.hidden = false;
-  });
+  if (!esimNoticeActive()) return;
+  const banner = document.getElementById('esimBanner');
+  if (banner) banner.hidden = false;
 })();
 
 if (INTRO_VOTE_ONLY && !isAdmin) {
