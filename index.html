@@ -518,25 +518,65 @@
     }
     .act-detail-subhead:first-child { margin-top: 0; }
 
-    .esim-key {
+    .esim-step { padding: 15px 0; border-top: 1px solid var(--border); }
+    .esim-step:first-of-type { padding-top: 2px; border-top: none; }
+    .esim-step:last-of-type { padding-bottom: 0; }
+    .esim-step-head {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 11px;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .esim-step-num {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8125rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .esim-step-when {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--muted);
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 9px;
+      white-space: nowrap;
+    }
+    .esim-step--key {
       background: var(--primary-light);
       border: 1.5px solid var(--primary);
       border-radius: var(--rsm);
-      padding: 12px 14px;
-      margin: 16px 0;
+      padding: 14px;
+      margin: 15px 0;
     }
+    .esim-step--key .esim-step-num { background: var(--accent); }
+    .esim-step--key .esim-step-when { background: var(--primary); border-color: var(--primary); color: #fff; }
+
     .esim-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.8125rem;
-      margin: 6px 0 4px;
+      font-size: 0.84rem;
+      margin: 4px 0;
     }
     .esim-table th, .esim-table td {
       border: 1px solid var(--border);
-      padding: 6px 8px;
+      padding: 7px 9px;
       text-align: left;
       vertical-align: top;
-      line-height: 1.45;
+      line-height: 1.5;
     }
     .esim-table th {
       background: var(--bg2);
@@ -2807,15 +2847,10 @@
       <div class="info-block">
         <div class="info-block-header" onclick="this.closest('.info-block').classList.toggle('open')">
           <span class="info-block-icon">📶</span>
-          <span class="info-block-title">유심 · 데이터</span>
+          <span class="info-block-title">eSIM · 유심 설정 (필독)</span>
           <span class="info-block-arrow">▾</span>
         </div>
-        <div class="info-block-body">
-          <div class="info-row"><span class="info-row-label">추천</span><span class="info-row-val">Viettel / Mobifone 유심 (공항 1층 구매)</span></div>
-          <div class="info-row"><span class="info-row-label">가격</span><span class="info-row-val">약 5만 동 ~ 10만 동 (약 3,000 ~ 6,000원)</span></div>
-          <div class="info-row"><span class="info-row-label">속도</span><span class="info-row-val">4G LTE, 유튜브·지도 무리 없음</span></div>
-          <div class="info-row"><span class="info-row-label">대안</span><span class="info-row-val">한국에서 eSIM 미리 구매 가능</span></div>
-        </div>
+        <div class="info-block-body" id="esimGuideInfo"></div>
       </div>
 
       <div class="info-block">
@@ -3006,59 +3041,71 @@
 <!-- ── eSIM 안내 Modal ── -->
 <div class="modal-overlay" id="modalEsim">
   <div class="modal">
-    <h2 class="modal-title">📱 베트남 eSIM 사용 준비 — 가족 주의사항</h2>
+    <h2 class="modal-title">📱 베트남 eSIM 사용 준비 — 🚨 필독</h2>
 
-    <div class="act-detail-subhead">1. 출국 전 준비 (한국, 와이파이 환경)</div>
-    <ol class="act-detail-steps">
-      <li><strong>아이폰</strong>: 설정 &gt; 셀룰러 &gt; eSIM 추가 &gt; QR코드 스캔</li>
-      <li><strong>갤럭시</strong>: 설정 &gt; 연결 &gt; SIM 카드 관리자 &gt; eSIM 추가 &gt; QR코드 스캔</li>
-      <li>등록 화면에서: <strong>기본 회선 = 한국 유심</strong>, <strong>셀룰러 데이터 = 한국 유심</strong></li>
-      <li>새로 등록한 eSIM은 "등록만 되고 꺼진" 상태로 대기</li>
-    </ol>
+    <div id="esimGuide">
+      <section class="esim-step">
+        <div class="esim-step-head"><span class="esim-step-num">1</span> 출국 전 eSIM 등록 <span class="esim-step-when">🇰🇷 한국 · 와이파이</span></div>
+        <ol class="act-detail-steps">
+          <li><strong>아이폰</strong>: 설정 &gt; 셀룰러 &gt; eSIM 추가 &gt; QR코드 스캔</li>
+          <li><strong>갤럭시</strong>: 설정 &gt; 연결 &gt; SIM 카드 관리자 &gt; eSIM 추가 &gt; QR코드 스캔</li>
+          <li>등록 화면에서 <strong>기본 회선 = 한국 유심</strong>, <strong>셀룰러 데이터 = 한국 유심</strong></li>
+          <li>새로 등록한 eSIM은 "등록만 되고 꺼진" 상태로 대기</li>
+        </ol>
+      </section>
 
-    <div class="act-detail-subhead">2. 회선 꺼짐 상태 확인 (등록 후 ~ 출국 전)</div>
-    <ol class="act-detail-steps">
-      <li><strong>아이폰</strong>: 설정 &gt; 셀룰러 &gt; eSIM 탭 &gt; "이 회선 켜기" 토글 <strong>꺼짐(회색)</strong> 확인</li>
-      <li><strong>갤럭시</strong>: 설정 &gt; 연결 &gt; SIM 카드 관리자 &gt; 베트남 eSIM 토글 꺼짐 확인</li>
-      <li>⚠️ eSIM <strong>삭제 금지</strong>, 토글만 조작</li>
-    </ol>
+      <section class="esim-step">
+        <div class="esim-step-head"><span class="esim-step-num">2</span> 베트남 회선 꺼짐 확인 <span class="esim-step-when">🇰🇷 출국 전</span></div>
+        <ol class="act-detail-steps">
+          <li><strong>아이폰</strong>: 설정 &gt; 셀룰러 &gt; eSIM 탭 &gt; "이 회선 켜기" 토글이 <strong>꺼짐(회색)</strong>인지 확인</li>
+          <li><strong>갤럭시</strong>: 설정 &gt; 연결 &gt; SIM 카드 관리자 &gt; 베트남 eSIM 토글 꺼짐 확인</li>
+          <li>⚠️ eSIM <strong>삭제 금지</strong> — 토글만 조작</li>
+        </ol>
+      </section>
 
-    <div class="esim-key">
-      <div class="act-detail-subhead" style="margin-top:0">⭐ 3. 베트남 도착 후, <span style="text-decoration:underline">호텔 도착 시</span> eSIM 켜기</div>
-      <ol class="act-detail-steps">
-        <li>항공기 모드 끄기</li>
-        <li><strong>아이폰</strong>: 셀룰러 &gt; 베트남 eSIM 회선 켜기 ON → 셀룰러 데이터를 베트남 eSIM로 변경 → 데이터 로밍 ON</li>
-        <li><strong>갤럭시</strong>: SIM 관리자에서 베트남 eSIM 토글 ON → 모바일 데이터를 베트남 eSIM로 지정 → 데이터 로밍 ON</li>
-        <li>신호 안 잡히면 항공기 모드 껐다 켜기</li>
-      </ol>
+      <section class="esim-step esim-step--key">
+        <div class="esim-step-head"><span class="esim-step-num">3</span> 베트남 eSIM 켜기 <span class="esim-step-when">🇻🇳 호텔 도착 시</span></div>
+        <ol class="act-detail-steps">
+          <li>항공기 모드 끄기</li>
+          <li><strong>아이폰</strong>: 셀룰러 &gt; 베트남 eSIM 회선 켜기 ON → 셀룰러 데이터를 베트남 eSIM으로 변경 → 데이터 로밍 ON</li>
+          <li><strong>갤럭시</strong>: SIM 관리자에서 베트남 eSIM 토글 ON → 모바일 데이터를 베트남 eSIM으로 지정 → 데이터 로밍 ON</li>
+          <li>신호 안 잡히면 항공기 모드 껐다 켜기</li>
+        </ol>
+      </section>
+
+      <section class="esim-step">
+        <div class="esim-step-head"><span class="esim-step-num">4</span> 한국 유심 로밍 요금 관리 <span class="esim-step-when">⚠️ 여행 중</span></div>
+        <table class="esim-table">
+          <thead>
+            <tr><th>항목</th><th>설정</th><th>비고</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>데이터 로밍</td><td>반드시 OFF</td><td>켜져 있으면 요금 폭탄 위험</td></tr>
+            <tr><td>전화 받기</td><td>받지 않기</td><td>오는 건 무료, 받는 순간 과금</td></tr>
+            <tr><td>문자 보내기</td><td>보내지 않기</td><td>받는 문자는 대부분 무료</td></tr>
+            <tr><td>부재중 알림</td><td>그대로 둬도 됨</td><td>요금 없음</td></tr>
+          </tbody>
+        </table>
+        <div class="act-detail-warn">→ 데이터 OFF · 전화 안 받기 · 문자 안 보내기 이 3가지만 지키면 한국 유심 요금은 0원</div>
+      </section>
+
+      <section class="esim-step">
+        <div class="esim-step-head"><span class="esim-step-num">5</span> 실전 연락 방법 <span class="esim-step-when">여행 중</span></div>
+        <ol class="act-detail-steps">
+          <li>데이터는 베트남 eSIM으로만 사용</li>
+          <li>카카오톡·메신저로 대부분의 연락 처리 (데이터 기반이라 무료)</li>
+          <li>한국 번호는 인증번호 수신 등 최소 용도로만 유지</li>
+        </ol>
+      </section>
+
+      <section class="esim-step">
+        <div class="esim-step-head"><span class="esim-step-num">6</span> 귀국 시 <span class="esim-step-when">🇰🇷 귀국 후</span></div>
+        <ol class="act-detail-steps">
+          <li>한국 유심 데이터 로밍 다시 켜기</li>
+          <li>베트남 eSIM 회선은 삭제</li>
+        </ol>
+      </section>
     </div>
-
-    <div class="act-detail-subhead">4. 한국 유심 쪽 로밍 요금 관리 (중요!)</div>
-    <table class="esim-table">
-      <thead>
-        <tr><th>항목</th><th>설정</th><th>비고</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>데이터 로밍</td><td>반드시 OFF</td><td>켜져 있으면 요금 폭탄 위험</td></tr>
-        <tr><td>전화 받기</td><td>받지 않기</td><td>오는 건 무료, 받는 순간 과금</td></tr>
-        <tr><td>문자 보내기</td><td>보내지 않기</td><td>받는 문자는 대부분 무료</td></tr>
-        <tr><td>부재중 알림</td><td>그대로 둬도 됨</td><td>요금 없음</td></tr>
-      </tbody>
-    </table>
-    <div class="act-detail-warn">→ 데이터 OFF / 전화 안 받기 / 문자 안 보내기 이 3가지만 지키면 한국 유심 쪽 요금은 0원</div>
-
-    <div class="act-detail-subhead">5. 실전 연락 방법</div>
-    <ol class="act-detail-steps">
-      <li>데이터는 베트남 eSIM으로만 사용</li>
-      <li>카카오톡·메신저 앱으로 대부분의 연락 처리 (데이터 기반이라 무료)</li>
-      <li>한국 번호는 인증번호 수신 등 최소 용도로만 유지</li>
-    </ol>
-
-    <div class="act-detail-subhead">6. 귀국 시</div>
-    <ol class="act-detail-steps">
-      <li>한국 유심 데이터 로밍 다시 켜기</li>
-      <li>베트남 eSIM 회선은 삭제</li>
-    </ol>
 
     <div class="modal-footer">
       <button class="btn btn-primary" onclick="closeModal('modalEsim')">확인했어요</button>
@@ -4737,6 +4784,16 @@ if ('serviceWorker' in navigator) {
   if (!esimNoticeActive()) return;
   const banner = document.getElementById('esimBanner');
   if (banner) banner.hidden = false;
+})();
+
+// eSIM 가이드 본문을 여행정보 유심·데이터 탭에도 복제 (팝업 종료 후 상시 열람용)
+(function () {
+  const src = document.getElementById('esimGuide');
+  const dst = document.getElementById('esimGuideInfo');
+  if (!src || !dst) return;
+  const clone = src.cloneNode(true);
+  clone.removeAttribute('id');
+  dst.appendChild(clone);
 })();
 
 if (INTRO_VOTE_ONLY && !isAdmin) {
