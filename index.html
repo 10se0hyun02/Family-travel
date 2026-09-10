@@ -2343,6 +2343,9 @@
         9/11(금) ~ 9/13(일)
         <span class="direction-chip">숙소 1</span>
       </div>
+      <div style="font-size:0.8125rem; margin:-6px 0 14px;">
+        📎 <a href="https://blog.naver.com/11_28c/224323617322" target="_blank" rel="noopener" style="color:var(--primary)">쉐라톤 그랜드 다낭 참고 블로그</a>
+      </div>
       <div class="booking-info-card">
         <div class="booking-row">
           <div class="booking-kv">
@@ -2408,6 +2411,9 @@
       <div class="flight-leg-title">
         9/13(일) ~ 9/14(월)
         <span class="direction-chip">숙소 2</span>
+      </div>
+      <div style="font-size:0.8125rem; margin:-6px 0 14px;">
+        📎 <a href="https://blog.naver.com/drop_two0223/224392243619" target="_blank" rel="noopener" style="color:var(--primary)">신라모노그램 다낭 참고 블로그</a>
       </div>
       <div class="booking-info-card">
         <div class="booking-row">
@@ -3208,7 +3214,7 @@ const SAMPLE_INFO = {
 
 const SAMPLE_ACTS = [
   // ── Day 1: 9/11(금) 출발 ──
-  { id:'s31', day:0, time:'16:00', category:'shopping',  icon:'📷', title:'오즈모 대여',                  description:'여행 브이로그용 짐벌 대여',                                      location:'인천국제공항 T1 3층 출국장 9번게이트', cost:'', bookingStatus:'planned', order:-1 },
+  { id:'s31', day:0, time:'16:00', category:'shopping',  icon:'📷', title:'오즈모 대여',                  description:'여행 브이로그용 짐벌 대여',                                      location:'인천국제공항 T1 3층 출발층 8번 출입구', cost:'', bookingStatus:'planned', order:-1 },
   { id:'s1',  day:0, time:'17:00', category:'flight',    icon:'👨‍👩‍👧‍👦', title:'인천공항 집결',                description:'여유롭게 도착해서, 저녁 공항에서 같이 먹고 출발',           location:'인천국제공항 T1',    cost:'',          bookingStatus:'confirmed', order:0 },
   { id:'s2',  day:0, time:'20:55', category:'flight',    title:'인천 → 다낭 탑승',             description:'에어서울 RS0511. 비행 4시간 45분',                                 location:'인천국제공항 T1',    cost:'왕복 포함', bookingStatus:'confirmed', order:1 },
   { id:'s3',  day:0, time:'23:40', category:'transport', title:'다낭 공항 도착 · 리조트 이동', description:'쉐라톤 그랜드 다낭까지 약 14km · 차로 25분',                     location:'다낭 국제공항 T2',   cost:'Grab 약 15~20만동', bookingStatus:'confirmed', order:2,
@@ -3313,7 +3319,7 @@ const SAMPLE_ACTS = [
     ` },
   { id:'s13', day:2, time:'10:00', category:'activity',  title:'인피니티풀 수영',                  description:'체크아웃 전 마지막 풀 타임 🏊 12시까지만 가능!',                 location:'풀빌라',             cost:'포함',      bookingStatus:'planned',   order:0 },
   { id:'s14', day:2, time:'12:00', category:'hotel',     title:'체크아웃 · 짐 맡기기',         description:'캐리어 프론트에 맡기고, 마사지샵 픽업 기다리기',                 location:'리조트 프런트',      cost:'',          bookingStatus:'planned',   order:1 },
-  { id:'s27', day:2, time:'12:00', category:'activity',  title:'마사지',                       description:'다한스파 무료 픽업(쉐라톤) 12:00 → 12:30 도착, 마사지 12:30~14:00 (90분)', location:'다한스파 (Dahan Spa)', cost:'',          bookingStatus:'confirmed', order:2 },
+  { id:'s27', day:2, time:'12:00', category:'activity',  icon:'💆', title:'마사지(다한스파)',    description:'다한스파 무료 픽업(쉐라톤) 12:00 → 12:30 도착, 마사지 12:30~14:00 (90분)', location:'다한스파 (Dahan Spa)', cost:'',          bookingStatus:'confirmed', order:2 },
   { id:'s15', day:2, time:'15:30', category:'food',      title:'목식당',                description:'한국인들 사이 최고 인기 씨푸드, 미케비치 도보 7~10분',           location:'목식당 (Hải sản Mộc quán) - 26 Tô Hiến Thành, Sơn Trà', cost:'~1인 3~6만원대', bookingStatus:'planned', order:3,
     detail: `
       <div class="act-detail-subhead">🦐 한국인 추천 메뉴</div>
@@ -3375,11 +3381,23 @@ const SAMPLE_ACTS = [
   // ── Day 4: 9/14(월) ──
   { id:'s29', day:3, time:'09:00', category:'food',      title:'조식',                         description:'Dining M 조식, 이용시간 06:30~10:30',                             location:'신라모노그램 다낭 - Dining M', cost:'조식 포함', bookingStatus:'confirmed', order:0 },
   { id:'s30', day:3, time:'12:00', category:'hotel',     title:'체크아웃',                     description:'신라모노그램 체크아웃',                                           location:'신라모노그램 다낭',  cost:'',          bookingStatus:'confirmed', order:1 },
+  { id:'s34', day:3, time:'12:30', category:'food',      title:'펄 호이안',                    description:'쌀국수 맛집',                                                     location:'펄 호이안 (Pearl Hoi An) - 19 Đào Duy Từ, Hội An', cost:'', bookingStatus:'planned', order:2 },
+  { id:'s35', day:3, time:'13:30', category:'food',      title:'마담캉 반미퀸',                description:'호이안 대표 반미 맛집',                                           location:'Madam Khanh - The Banh Mi Queen - 115 Trần Cao Vân, Hội An', cost:'', bookingStatus:'planned', order:3 },
+  { id:'s36', day:3, time:'14:30', category:'food',      title:'까고클럽',                     description:'투본강변 테라스 카페, 커피·디저트',                               location:'Cargo Club - 107-109 Nguyễn Thái Học, Hội An', cost:'', bookingStatus:'planned', order:4 },
+  { id:'s37', day:3, time:'15:30', category:'sight',      title:'올드타운 낮산책',              description:'노란 벽 건물 구경 + 기념품·재단샵 쇼핑',                          location:'호이안 올드타운',    cost:'',          bookingStatus:'planned', order:5 },
+  { id:'s38', day:3, time:'18:00', category:'activity',  icon:'💆', title:'마사지 (논스파)',      description:'밤늦게 비행기라 저녁에 여유롭게 마사지 받기',                     location:'논스파 (Nón Spa) - 139 Phan Chu Trinh, Hội An', cost:'', bookingStatus:'planned', order:6,
+    detail: `
+      <ol class="act-detail-steps">
+        <li>호이안 올드타운 중심에 위치, 태국식·베트남식·핫스톤 융합 마사지 전문</li>
+        <li>웰컴 드링크 + 족욕으로 시작, <strong>논 시그니처 마사지</strong> 또는 전통 베트남 마사지 선택 가능</li>
+        <li>조용하고 프라이빗한 공간에서 진행</li>
+      </ol>
+    ` },
 
   // ── Day 5: 9/15(화) 귀국 ──
   { id:'s21', day:4, time:'01:50', category:'flight',    title:'다낭 → 인천 탑승',             description:'에어서울 RS0512. 심야 출발! 01:20 이전 탑승구 도착 필수',          location:'다낭 국제공항 T2',   cost:'왕복 포함', bookingStatus:'confirmed', order:0 },
   { id:'s22', day:4, time:'08:25', category:'flight',    title:'인천공항 도착 · 해산',         description:'비행 4시간 45분. 수하물 수취 후 해산. 수고했어요 🎉',             location:'인천국제공항 T1',    cost:'',          bookingStatus:'confirmed', order:1 },
-  { id:'s32', day:4, time:'09:00', category:'shopping',  icon:'📷', title:'오즈모 반납',           description:'대여했던 짐벌 반납',                                              location:'인천국제공항 T1 3층 출국장 9번게이트', cost:'', bookingStatus:'planned', order:2 }
+  { id:'s32', day:4, time:'09:00', category:'shopping',  icon:'📷', title:'오즈모 반납',           description:'대여했던 짐벌 반납',                                              location:'인천국제공항 T1 3층 출발층 8번 출입구', cost:'', bookingStatus:'planned', order:2 }
 ];
 
 /* ── Firebase 초기화 ──────────────────────────── */
