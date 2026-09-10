@@ -235,6 +235,27 @@
       letter-spacing: 0.15px;
     }
 
+    .esim-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 11px 16px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-family: inherit;
+      font-size: 0.8125rem;
+      text-align: left;
+      cursor: pointer;
+      line-height: 1.4;
+    }
+    .esim-banner strong { font-weight: 700; }
+    .esim-banner-cta { flex-shrink: 0; font-weight: 700; white-space: nowrap; }
+
     .admin-btn {
       position: fixed;
       bottom: 24px;
@@ -496,6 +517,33 @@
       margin: 16px 0 8px;
     }
     .act-detail-subhead:first-child { margin-top: 0; }
+
+    .esim-key {
+      background: var(--primary-light);
+      border: 1.5px solid var(--primary);
+      border-radius: var(--rsm);
+      padding: 12px 14px;
+      margin: 16px 0;
+    }
+    .esim-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      margin: 6px 0 4px;
+    }
+    .esim-table th, .esim-table td {
+      border: 1px solid var(--border);
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.45;
+    }
+    .esim-table th {
+      background: var(--bg2);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .esim-table td:nth-child(2) { font-weight: 700; color: var(--primary); white-space: nowrap; }
 
     .act-actions {
       display: none;
@@ -2228,6 +2276,11 @@
     </div>
   </header>
 
+  <button class="esim-banner" id="esimBanner" hidden onclick="openModal('modalEsim')">
+    <span>📱 <strong>베트남 eSIM 사용 준비</strong> — 출발 전 가족 모두 확인하세요</span>
+    <span class="esim-banner-cta">자세히 →</span>
+  </button>
+
   <!-- ── Section + Day Nav ── -->
   <div class="sticky-navs">
     <nav class="section-nav" id="sectionNav">
@@ -2946,6 +2999,69 @@
     <div id="actDetailBody"></div>
     <div class="modal-footer">
       <button class="btn btn-primary" onclick="closeModal('modalActDetail')">닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── eSIM 안내 Modal ── -->
+<div class="modal-overlay" id="modalEsim">
+  <div class="modal">
+    <h2 class="modal-title">📱 베트남 eSIM 사용 준비 — 가족 주의사항</h2>
+
+    <div class="act-detail-subhead">1. 출국 전 준비 (한국, 와이파이 환경)</div>
+    <ol class="act-detail-steps">
+      <li><strong>아이폰</strong>: 설정 &gt; 셀룰러 &gt; eSIM 추가 &gt; QR코드 스캔</li>
+      <li><strong>갤럭시</strong>: 설정 &gt; 연결 &gt; SIM 카드 관리자 &gt; eSIM 추가 &gt; QR코드 스캔</li>
+      <li>등록 화면에서: <strong>기본 회선 = 한국 유심</strong>, <strong>셀룰러 데이터 = 한국 유심</strong></li>
+      <li>새로 등록한 eSIM은 "등록만 되고 꺼진" 상태로 대기</li>
+    </ol>
+
+    <div class="act-detail-subhead">2. 회선 꺼짐 상태 확인 (등록 후 ~ 출국 전)</div>
+    <ol class="act-detail-steps">
+      <li><strong>아이폰</strong>: 설정 &gt; 셀룰러 &gt; eSIM 탭 &gt; "이 회선 켜기" 토글 <strong>꺼짐(회색)</strong> 확인</li>
+      <li><strong>갤럭시</strong>: 설정 &gt; 연결 &gt; SIM 카드 관리자 &gt; 베트남 eSIM 토글 꺼짐 확인</li>
+      <li>⚠️ eSIM <strong>삭제 금지</strong>, 토글만 조작</li>
+    </ol>
+
+    <div class="esim-key">
+      <div class="act-detail-subhead" style="margin-top:0">⭐ 3. 베트남 도착 후, <span style="text-decoration:underline">호텔 도착 시</span> eSIM 켜기</div>
+      <ol class="act-detail-steps">
+        <li>항공기 모드 끄기</li>
+        <li><strong>아이폰</strong>: 셀룰러 &gt; 베트남 eSIM 회선 켜기 ON → 셀룰러 데이터를 베트남 eSIM로 변경 → 데이터 로밍 ON</li>
+        <li><strong>갤럭시</strong>: SIM 관리자에서 베트남 eSIM 토글 ON → 모바일 데이터를 베트남 eSIM로 지정 → 데이터 로밍 ON</li>
+        <li>신호 안 잡히면 항공기 모드 껐다 켜기</li>
+      </ol>
+    </div>
+
+    <div class="act-detail-subhead">4. 한국 유심 쪽 로밍 요금 관리 (중요!)</div>
+    <table class="esim-table">
+      <thead>
+        <tr><th>항목</th><th>설정</th><th>비고</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>데이터 로밍</td><td>반드시 OFF</td><td>켜져 있으면 요금 폭탄 위험</td></tr>
+        <tr><td>전화 받기</td><td>받지 않기</td><td>오는 건 무료, 받는 순간 과금</td></tr>
+        <tr><td>문자 보내기</td><td>보내지 않기</td><td>받는 문자는 대부분 무료</td></tr>
+        <tr><td>부재중 알림</td><td>그대로 둬도 됨</td><td>요금 없음</td></tr>
+      </tbody>
+    </table>
+    <div class="act-detail-warn">→ 데이터 OFF / 전화 안 받기 / 문자 안 보내기 이 3가지만 지키면 한국 유심 쪽 요금은 0원</div>
+
+    <div class="act-detail-subhead">5. 실전 연락 방법</div>
+    <ol class="act-detail-steps">
+      <li>데이터는 베트남 eSIM으로만 사용</li>
+      <li>카카오톡·메신저 앱으로 대부분의 연락 처리 (데이터 기반이라 무료)</li>
+      <li>한국 번호는 인증번호 수신 등 최소 용도로만 유지</li>
+    </ol>
+
+    <div class="act-detail-subhead">6. 귀국 시</div>
+    <ol class="act-detail-steps">
+      <li>한국 유심 데이터 로밍 다시 켜기</li>
+      <li>베트남 eSIM 회선은 삭제</li>
+    </ol>
+
+    <div class="modal-footer">
+      <button class="btn btn-primary" onclick="closeModal('modalEsim')">확인했어요</button>
     </div>
   </div>
 </div>
@@ -4607,6 +4723,14 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(err => console.warn('SW 등록 실패:', err));
   });
 }
+
+// eSIM 안내 배너: 오늘 ~ 9/11(금) 자정까지만 노출
+(function () {
+  const banner = document.getElementById('esimBanner');
+  if (!banner) return;
+  const cutoff = new Date('2026-09-12T00:00:00+09:00');
+  if (Date.now() < cutoff.getTime()) banner.hidden = false;
+})();
 
 if (INTRO_VOTE_ONLY && !isAdmin) {
   document.getElementById('sectionNav').style.display = 'none';
