@@ -1,6 +1,10 @@
-const CACHE_NAME = 'danang-trip-shell-v1';
+const CACHE_NAME = 'danang-trip-shell-v2';
 const SHELL_URLS = [
   '/index.html',
+  '/manifest.json',
+  '/icons/icon-192.png',
+  '/icons/icon-512.png',
+  '/icons/apple-touch-icon.png',
   'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap',
   'https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js',
   'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js'
@@ -29,7 +33,7 @@ self.addEventListener('fetch', event => {
   if (req.method !== 'GET') return;
 
   const isDoc = req.mode === 'navigate' || req.destination === 'document';
-  const isShellAsset = SHELL_URLS.includes(req.url);
+  const isShellAsset = SHELL_URLS.some(u => req.url === u || req.url.endsWith(u));
   if (!isDoc && !isShellAsset) return; // Firestore 등 나머지 요청은 그대로 통과시킴
 
   const cacheKey = isDoc ? '/index.html' : req;
