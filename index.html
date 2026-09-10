@@ -1697,6 +1697,37 @@
       font-family: inherit;
     }
     .letter-save-btn:hover { opacity: 0.88; }
+    .letter-save-actions { display: flex; gap: 8px; }
+    .letter-tempsave-btn {
+      padding: 9px 16px;
+      background: transparent;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+      border-radius: var(--rsm);
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .letter-tempsave-btn:hover { background: var(--primary-light); }
+    .letter-draft-hint-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      min-height: 18px;
+    }
+    .letter-draft-revert {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: underline;
+      padding: 0;
+    }
 
     /* 받는사람 선택 */
     .letter-recipients {
@@ -2330,7 +2361,7 @@
       <button class="sec-tab"        id="secTab-flight"    onclick="switchSection('flight')"   >항공정보</button>
       <button class="sec-tab"        id="secTab-bus"       onclick="switchSection('bus')"      style="display:none">리무진정보</button>
       <button class="sec-tab"        id="secTab-checklist" onclick="switchSection('checklist')">준비물</button>
-      <button class="sec-tab"        id="secTab-letter"    onclick="switchSection('letter')"   style="display:none">편지</button>
+      <button class="sec-tab"        id="secTab-letter"    onclick="switchSection('letter')"   >편지</button>
       <button class="sec-tab"        id="secTab-vote"      onclick="switchSection('vote')"     style="display:none">투표</button>
       <button class="sec-tab"        id="secTab-roulette"  onclick="switchSection('roulette')" >룰렛</button>
     </nav>
@@ -4061,9 +4092,47 @@ function _renderLetterList(el) {
     </div>`;
 }
 
+function letterDraftKey(id) {
+  return `ftLetterDraft:${letterUnlocked}:${letterRecipient}:${id ?? letterEditingId}`;
+}
+function loadLetterDraft() {
+  try { return JSON.parse(localStorage.getItem(letterDraftKey()) || 'null'); } catch (e) { return null; }
+}
+function clearLetterDraft(id) {
+  try { localStorage.removeItem(letterDraftKey(id)); } catch (e) {}
+}
+function fmtDraftTime(ts) {
+  return new Date(ts).toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+function saveLetterDraft(manual) {
+  if (!letterUnlocked || !letterRecipient || letterEditingId === null) return;
+  const title   = document.getElementById('letterTitleInput')?.value || '';
+  const content = document.getElementById('letterTextarea')?.value || '';
+  const now = Date.now();
+  try { localStorage.setItem(letterDraftKey(), JSON.stringify({ title, content, savedAt: now })); } catch (e) {}
+  const hint = document.getElementById('letterDraftHint');
+  if (hint) hint.textContent = (manual ? '임시저장 완료' : '자동 임시저장됨') + ' · ' + fmtDraftTime(now);
+  const revert = document.getElementById('letterDraftRevert');
+  if (revert) revert.hidden = false;
+}
+let _letterDraftTimer = null;
+function scheduleLetterDraft() {
+  clearTimeout(_letterDraftTimer);
+  _letterDraftTimer = setTimeout(() => saveLetterDraft(false), 700);
+}
+function revertLetterDraft() {
+  if (!confirm('임시저장한 내용을 지우고 마지막 저장본으로 되돌릴까요?')) return;
+  clearTimeout(_letterDraftTimer);
+  clearLetterDraft();
+  renderLetter();
+}
+
 function _renderLetterEditor(el) {
   const isNew  = letterEditingId === 'new';
   const letter = isNew ? null : letterData[letterEditingId];
+  const draft  = loadLetterDraft();
+  const title0   = draft ? draft.title   : (letter?.title || '');
+  const content0 = draft ? draft.content : (letter?.content || '');
   el.innerHTML = `
     ${_letterWriteBanner()}
     <div class="letter-write-section">
@@ -4072,12 +4141,20 @@ function _renderLetterEditor(el) {
         <span class="letter-editor-label">${isNew ? '새 편지' : '수정'} → ${esc(letterRecipient)}</span>
       </div>
       <input class="letter-title-input" id="letterTitleInput"
-        placeholder="제목" value="${esc(letter?.title || '')}">
+        placeholder="제목" value="${esc(title0)}" oninput="scheduleLetterDraft()">
       <textarea class="letter-textarea" id="letterTextarea"
-        placeholder="${esc(letterRecipient)}에게 하고 싶은 말을 적어주세요 💛">${esc(letter?.content || '')}</textarea>
+        placeholder="${esc(letterRecipient)}에게 하고 싶은 말을 적어주세요 💛"
+        oninput="scheduleLetterDraft()">${esc(content0)}</textarea>
+      <div class="letter-draft-hint-row">
+        <span class="letter-saved-hint" id="letterDraftHint">${draft ? '임시저장본 불러옴 · ' + fmtDraftTime(draft.savedAt) : ''}</span>
+        <button class="letter-draft-revert" id="letterDraftRevert" onclick="revertLetterDraft()" ${draft ? '' : 'hidden'}>임시저장 지우기</button>
+      </div>
       <div class="letter-save-row">
         ${!isNew ? `<button class="letter-del-btn" onclick="deleteLetter('${letterEditingId}')">🗑 삭제</button>` : `<span></span>`}
-        <button class="letter-save-btn" onclick="saveLetter()">저장하기 💾</button>
+        <div class="letter-save-actions">
+          <button class="letter-tempsave-btn" onclick="saveLetterDraft(true)">임시저장</button>
+          <button class="letter-save-btn" onclick="saveLetter()">저장하기 💾</button>
+        </div>
       </div>
     </div>`;
   setTimeout(() => document.getElementById('letterTextarea')?.focus(), 50);
@@ -4109,6 +4186,8 @@ async function saveLetter() {
   const title   = document.getElementById('letterTitleInput')?.value.trim() || '제목 없음';
   const content = document.getElementById('letterTextarea')?.value || '';
   const now     = Date.now();
+  clearTimeout(_letterDraftTimer);
+  clearLetterDraft(); // 정식 저장 시 임시저장본 제거
   if (fbReady) {
     const col = db.collection('trips').doc(TRIP_ID).collection('letters');
     if (letterEditingId === 'new') {
@@ -4132,6 +4211,7 @@ async function saveLetter() {
 
 async function deleteLetter(id) {
   if (!confirm('이 편지를 삭제할까요?')) return;
+  clearLetterDraft(id);
   if (fbReady) {
     await db.collection('trips').doc(TRIP_ID).collection('letters').doc(id).delete();
   } else {
@@ -4217,21 +4297,22 @@ function _renderLetterDetail(el) {
 
 function openLetterReading(id) { letterReadingId = id; renderLetter(); }
 
+const SAMPLE_LETTERS = [
+  { from: '👩🏻 엄마', to: '👨🏻 아빠', title: '여보, 환갑 축하해요 💕', content: '여보,\n\n어느새 환갑이네요. 세월이 이렇게 빠를 줄 몰랐어요.\n\n우리 가족 항상 지켜줘서 고마워요. 앞으로도 건강하게 내 옆에 오래 있어줘요. 사랑해요 ❤️', createdAt: Date.now() - 7200000 },
+  { from: '👧🏻 서현', to: '👨🏻 아빠', title: '아빠 환갑 축하해요 🎂', content: '아빠,\n\n환갑 진심으로 축하해요! 항상 바쁘게 일하시면서도 저한테 잘해줘서 감사해요.\n\n건강하게 오래오래 곁에 있어줘요. 사랑해요 ❤️', createdAt: Date.now() - 5400000 },
+  { from: '👦🏻 영빈', to: '👨🏻 아빠', title: '아빠한테', content: '아빠 환갑 축하해요!!\n\n나중에 제가 더 잘 되면 훨씬 좋은 여행 보내드릴게요. 사랑합니다 💪', createdAt: Date.now() - 3600000 },
+  { from: '👩🏻 엄마', to: '👧🏻 서현', title: '서현에게', content: '서현아, 우리 딸 항상 고마워. 다낭에서 같이 좋은 추억 많이 만들자 ❤️', createdAt: Date.now() - 2400000 },
+  { from: '👧🏻 서현', to: '👩🏻 엄마', title: '엄마에게', content: '엄마, 항상 우리 가족 챙겨줘서 고마워요. 이번 여행 엄마도 푹 쉬어요 💕', createdAt: Date.now() - 2000000 },
+  { from: '👦🏻 영빈', to: '👧🏻 서현', title: '누나에게', content: '누나, 다낭에서 맛있는 거 많이 먹자ㅋㅋ 이번 여행 재밌게 보내!', createdAt: Date.now() - 1200000 }
+];
+
 async function addSampleLetters() {
-  const samples = [
-    { from: '👩🏻 엄마', to: '👨🏻 아빠', title: '여보, 환갑 축하해요 💕', content: '여보,\n\n어느새 환갑이네요. 세월이 이렇게 빠를 줄 몰랐어요.\n\n우리 가족 항상 지켜줘서 고마워요. 앞으로도 건강하게 내 옆에 오래 있어줘요. 사랑해요 ❤️', createdAt: Date.now() - 7200000 },
-    { from: '👧🏻 서현', to: '👨🏻 아빠', title: '아빠 환갑 축하해요 🎂', content: '아빠,\n\n환갑 진심으로 축하해요! 항상 바쁘게 일하시면서도 저한테 잘해줘서 감사해요.\n\n건강하게 오래오래 곁에 있어줘요. 사랑해요 ❤️', createdAt: Date.now() - 5400000 },
-    { from: '👦🏻 영빈', to: '👨🏻 아빠', title: '아빠한테', content: '아빠 환갑 축하해요!!\n\n나중에 제가 더 잘 되면 훨씬 좋은 여행 보내드릴게요. 사랑합니다 💪', createdAt: Date.now() - 3600000 },
-    { from: '👩🏻 엄마', to: '👧🏻 서현', title: '서현에게', content: '서현아, 우리 딸 항상 고마워. 다낭에서 같이 좋은 추억 많이 만들자 ❤️', createdAt: Date.now() - 2400000 },
-    { from: '👧🏻 서현', to: '👩🏻 엄마', title: '엄마에게', content: '엄마, 항상 우리 가족 챙겨줘서 고마워요. 이번 여행 엄마도 푹 쉬어요 💕', createdAt: Date.now() - 2000000 },
-    { from: '👦🏻 영빈', to: '👧🏻 서현', title: '누나에게', content: '누나, 다낭에서 맛있는 거 많이 먹자ㅋㅋ 이번 여행 재밌게 보내!', createdAt: Date.now() - 1200000 }
-  ];
   if (!fbReady) {
-    samples.forEach((s, i) => { letterData['sample_' + i] = { id: 'sample_' + i, ...s }; });
+    SAMPLE_LETTERS.forEach((s, i) => { letterData['sample_' + i] = { id: 'sample_' + i, ...s }; });
     renderLetter(); return;
   }
   const col = db.collection('trips').doc(TRIP_ID).collection('letters');
-  for (const s of samples) await col.add(s);
+  for (const s of SAMPLE_LETTERS) await col.add(s);
   console.log('샘플 편지 추가 완료!');
 }
 
@@ -4242,6 +4323,7 @@ function listenLetters() {
   }
   db.collection('trips').doc(TRIP_ID).collection('letters')
     .onSnapshot(snap => {
+      if (letterPreviewMode) return; // 미리보기 모드에서는 가짜 데이터 유지
       letterData = {};
       snap.forEach(doc => { letterData[doc.id] = { id: doc.id, ...doc.data() }; });
       if (document.getElementById('secTab-letter')?.classList.contains('active')) renderLetter();
@@ -4814,6 +4896,7 @@ if (new URLSearchParams(location.search).get('clearLetters') === '1') {
 
 if (['dad','open'].includes(new URLSearchParams(location.search).get('preview'))) {
   letterPreviewMode = true;
+  SAMPLE_LETTERS.forEach((s, i) => { letterData['sample_' + i] = { id: 'sample_' + i, ...s }; });
   setTimeout(() => switchSection('letter'), 1200);
 }
 if (SCHEDULE_LOCKED) {
