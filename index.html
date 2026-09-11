@@ -635,7 +635,10 @@
       width: 100%;
       max-width: 480px;
       max-height: 90vh;
+      max-height: 90dvh;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
       padding: 24px;
     }
 
@@ -1445,7 +1448,7 @@
       .act-header     { padding: 13px 13px 10px; }
       .f-row          { grid-template-columns: 1fr; }
       .modal-overlay  { align-items: flex-end; padding: 0; }
-      .modal          { border-radius: var(--radius) var(--radius) 0 0; max-height: 88vh; }
+      .modal          { border-radius: var(--radius) var(--radius) 0 0; max-height: 88vh; max-height: 88dvh; }
 
       /* 참여자 칩 한 줄 */
       .participants   { flex-wrap: nowrap; }

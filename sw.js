@@ -1,4 +1,4 @@
-const CACHE_NAME = 'danang-trip-shell-v17';
+const CACHE_NAME = 'danang-trip-shell-v18';
 const SHELL_URLS = [
   '/index.html',
   '/manifest.json',
