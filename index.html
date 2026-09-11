@@ -3511,6 +3511,15 @@ const SAMPLE_ACTS = [
         <li>숙소 정확한 위치(풀사이드/객실 번호)를 배달 메모에 남겨두면 헷갈림 없이 수령 가능</li>
       </ol>
     ` },
+  { id:'s41', day:1, time:'14:00', category:'shopping', title:'이온몰 다낭 쇼핑',              description:'다낭 최초 이온몰, 중부 베트남 최대 쇼핑몰 · 140여 개 매장',       location:'AEON MALL Đà Nẵng - 46 Điện Biên Phủ, Thanh Khê', cost:'', bookingStatus:'planned', order:1788486315000,
+    detail: `
+      <div class="act-detail-subhead">👕 패션</div>
+      <div style="font-size:0.875rem; line-height:1.9">UNIQLO(유니클로) · MUJI(무인양품) · NIKE(나이키) · MLB(엠엘비) · Tommy Hilfiger(타미 힐피거) · Levi's(리바이스) · Lacoste(라코스테) · Crocs(크록스)</div>
+      <div class="act-detail-subhead">🍽 식당</div>
+      <div style="font-size:0.875rem; line-height:1.9">GoGi House(한국식 고깃집) · Manwah(대만식 훠궈) · Kichi Kichi(1인 샤브샤브) · Marukame Udon(마루가메 우동) · Dotori Dining(도토리 다이닝) · KFC</div>
+      <div class="act-detail-subhead">☕ 카페</div>
+      <div style="font-size:0.875rem; line-height:1.9">Highlands Coffee(하이랜드 커피) · Cloud Pot(클라우드 팟)</div>
+    ` },
   { id:'s10', day:1, time:'18:00', category:'food',      title:'안토이',                description:'미쉐린 빕구르망 베트남 로컬식당. 대표메뉴 반쎄오. 영업시간 10:30~21:30', location:'안토이 (An Thoi) - 114 Bạch Đằng, Hải Châu',    cost:'~6만원/인', bookingStatus:'planned',   order:5,
     detail: `
       <ol class="act-detail-steps">
@@ -3609,18 +3618,31 @@ const SAMPLE_ACTS = [
   // ── Day 4: 9/14(월) ──
   { id:'s29', day:3, time:'09:00', category:'food',      title:'조식',                         description:'Dining M 조식, 이용시간 06:30~10:30',                             location:'신라모노그램 다낭 - Dining M', cost:'조식 포함', bookingStatus:'confirmed', order:0 },
   { id:'s30', day:3, time:'12:00', category:'hotel',     title:'체크아웃',                     description:'신라모노그램 체크아웃',                                           location:'신라모노그램 다낭',  cost:'',          bookingStatus:'confirmed', order:1 },
-  { id:'s34', day:3, time:'12:30', category:'food',      title:'펄 호이안',                    description:'쌀국수 맛집',                                                     location:'펄 호이안 (Pearl Hoi An) - 19 Đào Duy Từ, Hội An', cost:'', bookingStatus:'planned', order:2 },
-  { id:'s35', day:3, time:'13:30', category:'food',      title:'마담캉 반미퀸',                description:'호이안 대표 반미 맛집',                                           location:'Madam Khanh - The Banh Mi Queen - 115 Trần Cao Vân, Hội An', cost:'', bookingStatus:'planned', order:3 },
-  { id:'s36', day:3, time:'14:30', category:'food',      title:'까고클럽',                     description:'투본강변 테라스 카페, 커피·디저트',                               location:'Cargo Club - 107-109 Nguyễn Thái Học, Hội An', cost:'', bookingStatus:'planned', order:4 },
-  { id:'s37', day:3, time:'15:30', category:'sight',      title:'올드타운 낮산책',              description:'노란 벽 건물 구경 + 기념품·재단샵 쇼핑',                          location:'호이안 올드타운',    cost:'',          bookingStatus:'planned', order:5 },
-  { id:'s38', day:3, time:'18:00', category:'activity',  icon:'💆', title:'마사지 (논스파)',      description:'밤늦게 비행기라 저녁에 여유롭게 마사지 받기',                     location:'논스파 (Nón Spa) - 139 Phan Chu Trinh, Hội An', cost:'', bookingStatus:'planned', order:6,
+  { id:'s40', day:3, time:'12:10', category:'transport', title:'짐 맡기고 호이안 이동',        description:'캐리어는 프런트에 맡기고 몸만 호이안으로 출발',                    location:'신라모노그램 다낭 → 호이안', cost:'Grab', bookingStatus:'planned', order:2 },
+  { id:'s34', day:3, time:'12:30', category:'food',      title:'펄 호이안',                    description:'쌀국수 맛집',                                                     location:'펄 호이안 (Pearl Hoi An) - 19 Đào Duy Từ, Hội An', cost:'', bookingStatus:'planned', order:3 },
+  { id:'s35', day:3, time:'13:30', category:'food',      title:'마담캉 반미퀸',                description:'호이안 대표 반미 맛집',                                           location:'Madam Khanh - The Banh Mi Queen - 115 Trần Cao Vân, Hội An', cost:'', bookingStatus:'planned', order:4 },
+  { id:'s36', day:3, time:'14:30', category:'rest',      title:'까고클럽',                     description:'투본강변 테라스 카페, 커피·디저트',                               location:'Cargo Club - 107-109 Nguyễn Thái Học, Hội An', cost:'', bookingStatus:'planned', order:5 },
+  { id:'s37', day:3, time:'15:30', category:'sight',      title:'올드타운 낮산책',              description:'노란 벽 건물 구경 + 기념품·재단샵 쇼핑',                          location:'호이안 올드타운',    cost:'',          bookingStatus:'planned', order:6 },
+  { id:'s38', day:3, time:'19:00', category:'activity',  icon:'💆', title:'마사지 (논스파)',     description:'밤늦게 비행기라 저녁에 여유롭게 마사지 받기',                     location:'논스파 (Nón Spa) - 139 Phan Chu Trinh, Hội An', cost:'', bookingStatus:'planned', order:7,
     detail: `
       <ol class="act-detail-steps">
         <li>호이안 올드타운 중심에 위치, 태국식·베트남식·핫스톤 융합 마사지 전문</li>
-        <li>웰컴 드링크 + 족욕으로 시작, <strong>논 시그니처 마사지</strong> 또는 전통 베트남 마사지 선택 가능</li>
+        <li>웰컴 드링크 + 족욕으로 시작</li>
         <li>조용하고 프라이빗한 공간에서 진행</li>
       </ol>
+      <div class="act-detail-subhead">예약 코스</div>
+      <table class="esim-table">
+        <thead><tr><th>가족</th><th>코스</th><th>시간</th></tr></thead>
+        <tbody>
+          <tr><td>서현</td><td>NON 시그니처 마사지</td><td>120분</td></tr>
+          <tr><td>엄마</td><td>풀바디 아로마</td><td>90분</td></tr>
+          <tr><td>아빠</td><td>풀바디 아로마</td><td>120분</td></tr>
+          <tr><td>영빈</td><td>타이 마사지</td><td>90분</td></tr>
+        </tbody>
+      </table>
+      <div class="act-detail-warn">→ 마사지 종료 후 <strong>신라모노그램 리조트</strong>로 드랍 서비스 이용해 복귀 → 프런트에 맡겨둔 캐리어 찾기</div>
     ` },
+  { id:'s39', day:3, time:'20:00', category:'transport', title:'신라모노그램 복귀 · 공항 이동', description:'프런트에 맡겨둔 캐리어 찾고 바로 다낭 공항으로 출발', location:'신라모노그램 다낭 → 다낭 국제공항 T2', cost:'Grab', bookingStatus:'planned', order:8 },
 
   // ── Day 5: 9/15(화) 귀국 ──
   { id:'s21', day:4, time:'01:50', category:'flight',    title:'다낭 → 인천 탑승',             description:'에어서울 RS0512. 심야 출발! 01:20 이전 탑승구 도착 필수',          location:'다낭 국제공항 T2',   cost:'왕복 포함', bookingStatus:'confirmed', order:0 },
